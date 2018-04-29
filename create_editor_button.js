@@ -17,7 +17,12 @@
 						name: 'label',
 						label: 'Linkbeschriftung',
 						values: ''
-					}, ],
+					}, {
+						type: 'radio',
+						name: 'js',
+						label: 'Mit Javascript verschlüsseln?',
+						value: ''
+					},],
 					onsubmit: function(e){
 
 						editor.insertContent(
@@ -25,7 +30,9 @@
 								e.data.mail +
 								'&quot; text=&quot;' +
 								e.data.label +
-								'&quot;]'
+								'&quot; js=&quot;' +
+								e.data.js +
+								'&quot;]' 
 						);
 					}
 				});

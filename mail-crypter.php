@@ -3,7 +3,7 @@
 Plugin Name: Mail Crypter
 Description: Mit diesem Plugin könnt ihr eure E-Mail-Adressen vor dem auslesen druch Spam-Bots schützen. Mit dem Shorttag <b>[mail-crypter]</b> könnt ihr ganz bequem eine verschlüsselte E-Mail-Adresse in eurer Wordpress-Seite einbauen.
 Author: wilka_2000
-Version: 0.3
+Version: 1.0
 License: GPLv3
 
 === License Information ===
@@ -23,11 +23,17 @@ along with Mail Crypter. If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 
 === Plugin Information ===
 
-Version: 0.3
-Date: 07.03.2017
+Version: 1.0
+Date: 08.03.2017
 Sollte es Probleme, Fehler oder Anmerkungen zu diesem Plugin geben, so kontaktieren Sie mich bitte unter: marco[dot]combosch[at]uni-ulm[dot]de
 
  */
+
+ function mail_crypter_activate(){
+	 wp_enqueue_script("Mail-Crypter-Script", (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/wp-content/plugins/mail-crypter/mail-crypter-script.min.js', array(), null, true);
+ }
+
+ add_action( 'wp_enqueue_scripts', 'mail_crypter_activate' );
 
 /*
  * Dieser Funktion wird ein String und die Position eines einzelnen Buchstabens übergeben.
@@ -77,18 +83,39 @@ function mail_crypter_add_href($mail, $text){
 	return $crypted;
 }
 
+function mail_crypter_js_crypt($text){
+	$tmp = "";
+	for($i = 0; $i < strlen($text); $i++){
+		$tmp .= chr(ord($text{$i})+2);
+	}
+
+	return $tmp;
+}
+
+function mail_crypter_javascript($mail, $text){
+	return $out = "<a href=\"#\" id=\"mail-crypter-href\" value=\"" . mail_crypter_js_crypt($mail) . "\">" . mail_crypter_js_crypt($text) . "</a>";
+}
+
 /* Sollte der Nutzer nur die E-Mail-Adresse und keinen Linktext angegeben haben, wird die E-Mail-Adresse
  * auch als Linktext übergeben.
  */
-function mail_crypter_just_mail($mail){
-	return mail_crypter_add_href($mail, $mail);
+function mail_crypter_just_mail($mail, $js){
+	if($js == "true"){
+		return mail_crypter_javascript($mail, $mail);
+	} else{
+		return mail_crypter_add_href($mail, $mail);
+	}
 }
 
 /*
  * Hier werden beide Parameter an die add_href Methode übergeben um den HTML-tag zu generieren.
  */
-function mail_crypter_text_mail($mail, $text){
-	return mail_crypter_add_href($mail, $text);
+function mail_crypter_text_mail($mail, $text, $js){
+	if($js == "true"){
+		return mail_crypter_javascript($mail, $text);
+	} else{
+		return mail_crypter_add_href($mail, $text);
+	}
 }
 
 /*
@@ -97,10 +124,15 @@ function mail_crypter_text_mail($mail, $text){
 function mail_crypter_shortcode($atts){
 
 	// Attribute werden aus Shortcode geladen
-	$atts = shortcode_atts(array( 'mail' => '', 'text' => ''), $atts, 'mail_crypt');
+	$atts = shortcode_atts(array( 'mail' => '', 'text' => '', 'js' => ''), $atts, 'mail_crypt');
 
 	$text = $atts['text'];
 	$mail = $atts['mail'];
+	$js = $atts['js'];
+
+  if(empty($js)){
+    $js = false;
+  }
 
 	// Überprüft welche Attribute (oder keine) von Nutzer benutzt wurden und gibt dann
 	// den jeweiligen HTML-tag zurück.
@@ -108,9 +140,9 @@ function mail_crypter_shortcode($atts){
 		return "";
 	} else{
 		if(empty($text)){
-			return mail_crypter_just_mail($mail);
+			return mail_crypter_just_mail($mail, $js);
 		} else{
-			return mail_crypter_text_mail($mail, $text);
+			return mail_crypter_text_mail($mail, $text, $js);
 		}
 	}
 }
