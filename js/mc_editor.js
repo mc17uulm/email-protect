@@ -24,7 +24,7 @@
 					}],
 					onsubmit: function(e) {
 						editor.insertContent(
-							'[mail_crypter mail=&quot;' +
+							'[mail_crypt mail=&quot;' +
 							e.data.mail +
 							'&quot; text=&quot;' +
 							e.data.label +

@@ -4,15 +4,15 @@ Plugin Name: Mail Crypter
 Description: Secures your mail addresses from spam bots. Use the [mail-crypt] shortcode to add encrypted mailaddresses to your page
 Author: wilka_2000
 Author URI: https://github.com/mc17uulm/wp-mail-crypter
-Version: 2.0
+Version: 2.0.2
 License: GPLv3
 Licence URI: http://www.gnu.org/licenses/gpl-3.0.txt
 Tags: mail, security, encryption, spam, email, secure, encrypt, protect
 
 === Plugin Information ===
 
-Version: 2.0
-Date: 23.10.2018
+Version: 2.0.2
+Date: 24.10.2018
 If there are problems, bugs or errors, please report on github: https://github.com/mc17uulm/wp-mail-crypter
 
  */
