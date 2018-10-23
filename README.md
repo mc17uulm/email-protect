@@ -1,14 +1,14 @@
 # WP Mail Crypter 
 <small>Version 2.0</small>
 
-###Wordpress anti-spam mail plugin :lock::e-mail:
+### Wordpress anti-spam mail plugin :lock::e-mail:
 
 This plugin secures your email addresses on your wordpress page from spam bots. With the simple use of
 the `[mail_crypt]` shortcode you can easily protect your email addresses from bots.
 
 ---
 
-####Usage:
+#### Usage:
 
 Insert your email address and a link text (optional) to the `[mail_crypt]` shortcode:
 `[mail_crypt mail="your@mailaddress.com" text="My Name"]`.
@@ -24,7 +24,7 @@ Now your email address isn't visible anymore for spam bots. You can also encrypt
 
 ---
 
-####Javascript:
+#### Javascript:
 
 Only add the `js` attribute to your shortcode: `[mail_crypt mail="your@mailaddress.com" text="My Name via js" js="true"]`
 
@@ -37,7 +37,7 @@ Sourcecode:
 
 ---
 
-####Code:
+#### Code:
 
 **wordpress.org:**
 [https://de.wordpress.org/plugins/mail-crypter/](https://de.wordpress.org/plugins/mail-crypter/)
