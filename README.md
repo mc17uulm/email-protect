@@ -1,19 +1,46 @@
-# Wordpress Mail-Crypter Plugin
-Wordpress Mail-Crypter Plugin
+# WP Mail Crypter 
+<small>Version 2.0</small>
 
-Mit diesem Plugin kannst du deine E-Mail Adressen auf deiner Wordpress Seite schützen. Dadurch ist es Bots nicht mehr möglich deine Webseite nach E-Mail-Adressen zu durchsuchen und diese dann für SPAM oder anderes zu missbrauchen.
-Mit dem einfachen `[mail_crypt]` Shortcode kannst du einfach deine E-Mail-Adressen in Beträge und Seiten einfügen.
+###Wordpress anti-spam mail plugin :lock::e-mail:
 
-Dazu musst du lediglich die einzufügende E-Mail-Adresse als  `mail` Attribut angeben.
+This plugin secures your email addresses on your wordpress page from spam bots. With the simple use of
+the `[mail_crypt]` shortcode you can easily protect your email addresses from bots.
 
-Beispiel:
-E-Mail-Adresse verschlüsseln:
+---
 
-`[mail_crypt mail="deine@mail-adresse.de"]` : Unter `mail=""` gibst du einfach deine zu verschlüsselnde E-Mail-Adresse an. Dadurch wird folgendes angezeigt:
-deine@mail-adresse.de
+####Usage:
 
-`[mail_crypt mail="deine@mail-adresse.de" text="Bitte senden Sie mir eine E-Mail"]` : Wie oben gibst du unter `mail=""` die E-Mail-Adresse ein und unter `text=""` einfach den Link-Text.
-Dadurch wird folgendes angezeigt: [Bitte senden Sie mir eine E-Mail](deine@mail-adresse.de )
+Insert your email address and a link text (optional) to the `[mail_crypt]` shortcode:
+`[mail_crypt mail="your@mailaddress.com" text="My Name"]`.
 
-** Plugin-Seite auf wordpress.org: **
+Result on your page: [My Name](your@mailaddress.com)
+
+Sourcecode: 
+```html
+<a href ='&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#121;&#111;&#117;&#114;&#64;&#109;&#97;&#105;&#108;&#97;&#100;&#100;&#114;&#101;&#115;&#115;&#46;&#99;&#111;&#109;'>&#77;&#121;&#32;&#78;&#97;&#109;&#101;</a>
+```
+
+Now your email address isn't visible anymore for spam bots. You can also encrypt your email addresses via Javascript:
+
+---
+
+####Javascript:
+
+Only add the `js` attribute to your shortcode: `[mail_crypt mail="your@mailaddress.com" text="My Name via js" js="true"]`
+
+Result on your page: [My Name via js](your@mailaddress.com)
+
+Sourcecode: 
+```html
+<a href='#' name='mail-encrypt-href' value='{qwtBockncfftguu0eqo'>O{"Pcog</a>`
+```
+
+---
+
+####Code:
+
+**wordpress.org:**
 [https://de.wordpress.org/plugins/mail-crypter/](https://de.wordpress.org/plugins/mail-crypter/)
+
+**github.com:**
+[https://github.com/mc17uulm/wp-mail-crypter](https://github.com/mc17uulm/wp-mail-crypter)

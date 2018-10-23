@@ -78,7 +78,7 @@ function mc_create_js_html_tag($mail, $text)
 function mc_shortcode($atts)
 {
 
-	$atts = shortcode_atts(array( 'mail' => '', 'text' => '', 'js' => ''), $atts, 'mail_crypter');
+	$atts = shortcode_atts(array( 'mail' => '', 'text' => '', 'js' => ''), $atts, 'mail_crypt');
 	
 	if(empty($atts['mail'])){
 		return "<strong>Error:</strong> [mail_crypter] shortcode arguments are invalid";
@@ -175,7 +175,7 @@ function mc_register_mce_button($buttons) {
 }
 
 add_action('wp_enqueue_scripts', 'mc_activate');
-add_shortcode('mail_crypter', 'mc_shortcode');
+add_shortcode('mail_crypt', 'mc_shortcode');
 add_action('admin_head', 'mc_mce_button');
 add_action('admin_menu', 'mc_add_menu');
 add_action('wp_ajax_nopriv_mc_encrypt', "mc_ajax_request");
