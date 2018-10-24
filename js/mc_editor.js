@@ -1,25 +1,26 @@
 (() =>  {
     tinymce.PluginManager.add('mc_mce_button', function (editor, url) {
+        console.log(editor.getLang('mc.title'));
         editor.addButton('mc_mce_button', {
-			title: "Add secure email address",
+			title: editor.getLang('mc.title', 'Add mail crypter shortcode'),
 			image: url + '/../img/icon.png',
 			onclick: function () {
 				editor.windowManager.open({
-					title: 'Add mail crypter shortcode',
+					title: editor.getLang('mc.title', 'Add mail crypter shortcode'),
 					body: [{
 						type: 'textbox',
 						name: 'mail',
-						label: "Email address",
+						label: editor.getLang('mc.mail_label', "Email address"),
 						value: ''
 					}, {
 						type: 'textbox',
 						name: 'label',
-						label: 'Link label',
+						label: editor.getLang('mc.link_label', 'Link label'),
 						values: ''
 					}, {
 						type: 'radio',
 						name: 'js',
-						label: 'Secure via javascript',
+						label: editor.getLang('mc.js_label', 'Secure via javascript'),
 						value: ''
 					}],
 					onsubmit: function(e) {

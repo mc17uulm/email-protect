@@ -11,12 +11,11 @@ Secures your mail addresses from spam bots. Use the [mail-crypt] shortcode to ad
 
 == Description ==
 # WP Mail Crypter
-<small>Version 2.0.2</small>
+Version 2.0.3
 
-### Wordpress anti-spam mail plugin
+## Wordpress anti-spam mail plugin
 
-This plugin secures your email addresses on your wordpress page from spam bots. With the simple use of
-the `[mail_crypt]` shortcode you can easily protect your email addresses from bots.
+This plugin secures your email addresses on your wordpress page from spam bots. With the simple use of the `[mail_crypt]` shortcode you can easily protect your email addresses from bots.
 
 ---
 
@@ -25,7 +24,7 @@ the `[mail_crypt]` shortcode you can easily protect your email addresses from bo
 Insert your email address and a link text (optional) to the `[mail_crypt]` shortcode:
 `[mail_crypt mail="your@mailaddress.com" text="My Name"]`.
 
-Result on your page: [My Name](your@mailaddress.com)
+Result on your page: [My Name](mailto:your@mailaddress.com)
 
 Sourcecode:
 ```html
@@ -40,7 +39,7 @@ Now your email address isn't visible anymore for spam bots. You can also encrypt
 
 Only add the `js` attribute to your shortcode: `[mail_crypt mail="your@mailaddress.com" text="My Name via js" js="true"]`
 
-Result on your page: [My Name via js](your@mailaddress.com)
+Result on your page: [My Name via js](mailto:your@mailaddress.com)
 
 Sourcecode:
 ```html
@@ -62,8 +61,6 @@ Sourcecode:
 2. Activated plugin
 3. Add `[mail_crypt]` shortcode on your pages and posts as shown in the description
 
-== Frequently Asked Questions ==
-
 == Screenshots ==
 1. You can encrypt your mail address directly in the menu
 2. Or use the menu in the editor to create a shortcode
@@ -71,6 +68,10 @@ Sourcecode:
 4. No mail address is shown in the source code now. The email address is secure from spam bots but still visible for visitors.
 
 == Changelog ==
+= 2.0.3 =
+* added Internationalization
+* added German language pack
+
 = 2.0.2 =
 * updated readme
 * fixed 2.0.1 bug also in js files

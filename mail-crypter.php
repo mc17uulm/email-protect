@@ -4,14 +4,16 @@ Plugin Name: Mail Crypter
 Description: Secures your mail addresses from spam bots. Use the [mail-crypt] shortcode to add encrypted mailaddresses to your page
 Author: wilka_2000
 Author URI: https://github.com/mc17uulm/wp-mail-crypter
-Version: 2.0.2
+Version: 2.0.3
+Text Domain: mc_language
+Domain Path: /lang
 License: GPLv3
 Licence URI: http://www.gnu.org/licenses/gpl-3.0.txt
 Tags: mail, security, encryption, spam, email, secure, encrypt, protect
 
 === Plugin Information ===
 
-Version: 2.0.2
+Version: 2.0.3
 Date: 24.10.2018
 If there are problems, bugs or errors, please report on github: https://github.com/mc17uulm/wp-mail-crypter
 
@@ -26,6 +28,11 @@ function mc_admin_activate(){
     wp_enqueue_script('bootstrap_js', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', array('jquery'), null, false);
     wp_enqueue_script("mail_crypter_js", plugin_dir_url(__FILE__) . 'js/mc_admin.js', array(), null, true);
     wp_localize_script('mail_crypter_js', 'mc_links', array( 'ajax_url' => admin_url('admin-ajax.php')));
+}
+
+function mc_load_plugin_textdomain()
+{
+    load_plugin_textdomain('mc_language', FALSE, basename(dirname(__FILE__)) . '/lang/');
 }
 
 function mc_char_at($str, $pos){
@@ -94,34 +101,34 @@ function mc_shortcode($atts)
 
 function mc_option_page(){ ?>
 	<div class="wrap">
-		<h1>Mail Crypter <small>Version 2.0</small></h1>
-		<p>Encrypt your email address directly. With or without <code>a href</code> tag<br /></p>
+        <h1>Mail Crypter <small><small>Version 2.0.3</small></small></h1>
+		<p><?= __('Encrypt your email address directly. With or without <code>a href</code> tag', 'mc_language') ?><br /></p>
 		<form id="mc_form">
 			<fieldset class="form-group">
-					<label>Email address:</label>
-			    	<input type="email" name="mc_email" class="form-control" required="true" placeholder="Email">
+					<label><?= __('Email address', 'mc_language') ?>:</label>
+			    	<input type="email" name="mc_email" class="form-control" required="true" placeholder="<?= __('Email', 'mc_language') ?>">
 				</fieldset>
 				<fieldset class="form-group">
-					<label class="radio-inline"><input checked type="radio" name="tag" value="1">with <code>a href tag</code></label>
-					<label class="radio-inline"><input type="radio" name="tag" value="0">only email</label>
+					<label class="radio-inline"><input checked type="radio" name="tag" value="1"><?= __('with <code>a href</code> tag', 'mc_language') ?></label>
+					<label class="radio-inline"><input type="radio" name="tag" value="0"><?= __('only email', 'mc_language') ?></label>
 				</fieldset>
 				<fieldset class="form-group">
-					<button type="button" id="mc_submit_btn" class="btn btn-success pull-right">Encrypt</button>
+					<button type="button" id="mc_submit_btn" class="btn btn-success pull-right"><?= __('Encrypt', 'mc_language') ?></button>
 				</fieldset>
 			</form>
 			<form>
 				<fieldset class="form-group">
-					<label>Output:</label>
+					<label><?= __('Output', 'mc_language') ?>:</label>
 					<textarea id="mc_output" name="mc_output" class="form-control" rows="5"></textarea>
 				</fieldset>
 				<fieldset class="form-group">
-					<label>In page: </label>
+					<label><?= __('In page', 'mc_language') ?>:</label>
 					<p>
 						<span id="mc_post"></span>
 					</p>
                 </fieldset>
                 <fieldset>
-                    <label>Sourcecode:</label>
+                    <label><?= __('Sourcecode', 'mc_language') ?>:</label>
                     <p>
                         <pre id="mc_source"></pre>
                     </p>
@@ -165,6 +172,7 @@ function mc_mce_button() {
 }
 
 function mc_tinymce_plugin($plugin_array) {
+    add_filter('mce_external_languages', 'mc_tinymce_lang');
     $plugin_array['mc_mce_button'] = plugin_dir_url(__FILE__) .'js/mc_editor.js';
     return $plugin_array;
 }
@@ -174,7 +182,14 @@ function mc_register_mce_button($buttons) {
     return $buttons;
 }
 
+function mc_tinymce_lang($locales)
+{
+    $locales["mc"] = plugin_dir_path(__FILE__) . 'lang/mc_mce_locale.php';
+    return $locales;
+}
+
 add_action('wp_enqueue_scripts', 'mc_activate');
+add_action('plugins_loaded', 'mc_load_plugin_textdomain');
 add_shortcode('mail_crypt', 'mc_shortcode');
 add_action('admin_head', 'mc_mce_button');
 add_action('admin_menu', 'mc_add_menu');
