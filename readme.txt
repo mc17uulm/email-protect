@@ -2,7 +2,7 @@
 Contributors: wilka_2000
 Tags: mail, security, encryption, spam, email, secure, encrypt, protect
 Requires at least: 4.4.1
-Tested up to: 4.9.8
+Tested up to: 5.2.2
 Stable tag: trunk
 License: GNUv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -11,7 +11,7 @@ Secures your mail addresses from spam bots. Use the [mail-crypt] shortcode to ad
 
 == Description ==
 # WP Mail Crypter
-Version 2.0.3
+Version 3.0
 
 ## Wordpress anti-spam mail plugin
 
@@ -68,6 +68,12 @@ Sourcecode:
 4. No mail address is shown in the source code now. The email address is secure from spam bots but still visible for visitors.
 
 == Changelog ==
+
+= 3.0 =
+* new Design
+* Integration in Gutenberg Editor
+* removed bootstrap from backend and replaced it with own stylesheet
+
 = 2.0.3 =
 * added Internationalization
 * added German language pack

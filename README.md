@@ -1,5 +1,5 @@
 # WP Mail Crypter 
-<small>Version 2.0.3</small>
+<small>Version 3.0</small>
 
 ### Wordpress anti-spam mail plugin :lock::e-mail:
 

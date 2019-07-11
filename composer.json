@@ -1,0 +1,16 @@
+{
+    "name": "mc17uulm/wp-mail-crypter",
+    "description": "Secures your mail addresses from spam bots. Use the [mail-crypt] shortcode to add encrypted mailaddresses to your page",
+    "authors": [
+        {
+            "name": "mc17uulm",
+            "email": "marco.combosch@uni-ulm.de"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "MailCrypter\\": "./php/"
+        }
+    }
+}

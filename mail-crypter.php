@@ -4,7 +4,7 @@ Plugin Name: Mail Crypter
 Description: Secures your mail addresses from spam bots. Use the [mail-crypt] shortcode to add encrypted mailaddresses to your page
 Author: wilka_2000
 Author URI: https://github.com/mc17uulm/wp-mail-crypter
-Version: 2.0.3
+Version: 3.0
 Text Domain: mc_language
 Domain Path: /lang
 License: GPLv3
@@ -13,21 +13,23 @@ Tags: mail, security, encryption, spam, email, secure, encrypt, protect
 
 === Plugin Information ===
 
-Version: 2.0.3
-Date: 24.10.2018
+Version: 3.0
+Date: 11.07.2019
 If there are problems, bugs or errors, please report on github: https://github.com/mc17uulm/wp-mail-crypter
 
  */
 
+require_once __DIR__ . '/vendor/autoload.php'; 
+
+use MailCrypter\AdminPage;
+
 function mc_activate(){
-	wp_enqueue_script("Mail-Crypter.js",plugin_dir_url(__FILE__) . 'js/mail-crypter.js', array(), null, true);
+	wp_enqueue_script("Mail-Crypter.js", plugin_dir_url(__FILE__) . 'js/mail-crypter.js', array(), null, true);
 }
 
 function mc_admin_activate(){
-    wp_enqueue_style('bootstrap_css', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css', array(), false, 'all');
-    wp_enqueue_script('bootstrap_js', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', array('jquery'), null, false);
-    wp_enqueue_script("mail_crypter_js", plugin_dir_url(__FILE__) . 'js/mc_admin.js', array(), null, true);
-    wp_localize_script('mail_crypter_js', 'mc_links', array( 'ajax_url' => admin_url('admin-ajax.php')));
+    wp_enqueue_script("mail_crypter_backend_script", plugin_dir_url(__FILE__) . 'js/mail_crypter_admin.js', array(), null, true);
+    wp_localize_script('mail_crypter_backend_script', 'mail_crypter_ajax', array( 'ajax_url' => admin_url('admin-ajax.php')));
 }
 
 function mc_load_plugin_textdomain()
@@ -99,9 +101,13 @@ function mc_shortcode($atts)
 	}
 }
 
-function mc_option_page(){ ?>
+function mc_option_page() {
+	AdminPage::render();
+}
+
+function mc_option_page_old(){ ?>
 	<div class="wrap">
-        <h1>Mail Crypter <small><small>Version 2.0.3</small></small></h1>
+        <h1>Mail Crypter <small><small>Version 3.0</small></small></h1>
 		<p><?= __('Encrypt your email address directly. With or without <code>a href</code> tag', 'mc_language') ?><br /></p>
 		<form id="mc_form">
 			<fieldset class="form-group">
