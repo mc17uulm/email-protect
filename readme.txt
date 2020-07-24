@@ -1,5 +1,5 @@
-=== Mail Crypter ===
-Contributors: wilka_2000
+=== Mail Enrypt ===
+Contributors: mc17
 Tags: mail, security, encryption, spam, email, secure, encrypt, protect
 Requires at least: 4.4.1
 Tested up to: 5.2.2
@@ -10,7 +10,7 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Secures your mail addresses from spam bots. Use the [mail-crypt] shortcode to add encrypted mail addresses to your page
 
 == Description ==
-# WP Mail Crypter
+# WP Mail Encrypt
 Version 3.0
 
 ## Wordpress anti-spam mail plugin
@@ -21,8 +21,8 @@ This plugin secures your email addresses on your wordpress page from spam bots. 
 
 #### Usage:
 
-Insert your email address and a link text (optional) to the `[mail_crypt]` shortcode:
-`[mail_crypt mail="your@mailaddress.com" text="My Name"]`.
+Insert your email address and a link text (optional) to the `[mail_encrypt]` shortcode:
+`[mail_encrypt mail="your@mailaddress.com" text="My Name"]`.
 
 Result on your page: [My Name](mailto:your@mailaddress.com)
 
@@ -37,7 +37,7 @@ Now your email address isn't visible anymore for spam bots. You can also encrypt
 
 #### Javascript:
 
-Only add the `js` attribute to your shortcode: `[mail_crypt mail="your@mailaddress.com" text="My Name via js" js="true"]`
+Only add the `js` attribute to your shortcode: `[mail_encrypt mail="your@mailaddress.com" text="My Name via js" js="true"]`
 
 Result on your page: [My Name via js](mailto:your@mailaddress.com)
 
@@ -57,9 +57,9 @@ Sourcecode:
 [https://github.com/mc17uulm/wp-mail-crypter](https://github.com/mc17uulm/wp-mail-crypter)
 
 == Installation ==
-1. Download zip and upload via wordpress installer, or search in plugins menu for "Mail Crypter" and install plugin
+1. Download zip and upload via wordpress installer, or search in plugins menu for "Mail Encrypter" and install plugin
 2. Activated plugin
-3. Add `[mail_crypt]` shortcode on your pages and posts as shown in the description
+3. Add `[mail_encrypt]` shortcode on your pages and posts as shown in the description
 
 == Screenshots ==
 1. You can encrypt your mail address directly in the menu
@@ -71,8 +71,10 @@ Sourcecode:
 
 = 3.0 =
 * new Design
+* renaming
 * Integration in Gutenberg Editor
 * removed bootstrap from backend and replaced it with own stylesheet
+* fixed bugs
 
 = 2.0.3 =
 * added Internationalization

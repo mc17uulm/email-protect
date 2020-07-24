@@ -1,7 +1,7 @@
 {
-  "name": "wp-mail-crypter",
+  "name": "wp-mail-encrypter",
   "version": "3.0.0",
-  "description": "Secures your mail addresses from spam bots. Use the [mail-crypt] shortcode to add encrypted mailaddresses to your page",
+  "description": "Secures your mail addresses from spam bots. Use the [mail-crypt] shortcode to add encrypted mail addresses to your page",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
