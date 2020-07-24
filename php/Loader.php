@@ -2,6 +2,10 @@
 
 namespace MailEncrypt;
 
+/**
+ * Class Loader
+ * @package MailEncrypt
+ */
 final class Loader
 {
 

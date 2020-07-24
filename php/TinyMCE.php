@@ -2,6 +2,10 @@
 
 namespace MailEncrypt;
 
+/**
+ * Class TinyMCE
+ * @package MailEncrypt
+ */
 final class TinyMCE
 {
 

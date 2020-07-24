@@ -19,7 +19,12 @@ If there are problems, bugs or errors, please report on github: https://github.c
 
  */
 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/php/MailEncrypt.php';
+require_once __DIR__ . '/php/Loader.php';
+require_once __DIR__ . '/php/CodeFactory.php';
+require_once __DIR__ . '/php/TinyMCE.php';
+require_once __DIR__ . '/php/views/Viewable.php';
+require_once __DIR__ . '/php/views/AdminPage.php';
 
 use MailEncrypt\MailEncrypt;
 use MailEncrypt\Loader;

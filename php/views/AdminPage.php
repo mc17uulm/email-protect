@@ -2,6 +2,8 @@
 
 namespace MailEncrypt\views;
 
+require_once __DIR__ . '/Viewable.php';
+
 use MailCrypter\views\Viewable;
 
 class AdminPage implements Viewable

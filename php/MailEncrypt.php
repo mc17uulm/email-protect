@@ -2,6 +2,10 @@
 
 namespace MailEncrypt;
 
+/**
+ * Class MailEncrypt
+ * @package MailEncrypt
+ */
 final class MailEncrypt
 {
 

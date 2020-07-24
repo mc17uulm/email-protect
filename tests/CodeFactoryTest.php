@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+require_once __DIR__ . '/../php/CodeFactory.php';
+
 use PHPUnit\Framework\TestCase;
 use MailEncrypt\CodeFactory;
 
