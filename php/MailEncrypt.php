@@ -5,16 +5,6 @@ namespace MailEncrypt;
 final class MailEncrypt
 {
 
-    function handle_ajax_request() : void {
-        /**switch($_POST["type"])
-        {
-            case 1:
-                die(mc_create_ascii_html_tag($_POST["email"], $_POST["email"]));
-            default:
-                die(mc_encrypt_to_ascii($_POST["email"]));
-        }*/
-    }
-
     /**
      * @param array $attributes
      * @return string

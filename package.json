@@ -1,5 +1,5 @@
 {
-  "name": "wp-mail-encrypter",
+  "name": "wp-mail-encrypt",
   "version": "3.0.0",
   "description": "Secures your mail addresses from spam bots. Use the [mail-crypt] shortcode to add encrypted mail addresses to your page",
   "main": "index.js",

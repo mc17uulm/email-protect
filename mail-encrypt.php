@@ -62,12 +62,3 @@ add_action('admin_menu', function() {
 add_action('admin_head', function() {
     TinyMCE::register_mce_button();
 });
-
-add_action('wp_ajax_nopriv_mc_encrypt', function() use ($instance) {
-    $instance->handle_ajax_request();
-});
-
-add_action('wp_ajax_mc_encrypt', function() use ($instance) {
-    $instance->handle_ajax_request();
-});
-?>
