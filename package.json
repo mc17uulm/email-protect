@@ -4,7 +4,7 @@
   "description": "Secures your mail addresses from spam bots. Use the [mail-crypt] shortcode to add encrypted mail addresses to your page",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack --mode development --watch"
   },
   "repository": {
     "type": "git",
@@ -24,17 +24,14 @@
     "@babel/preset-typescript": "^7.3.3",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
-    "ts-loader": "^6.0.4",
+    "loader-utils": "^2.0.0",
     "source-map-loader": "^0.2.4",
+    "ts-loader": "^6.0.4",
     "typescript": "^3.5.1",
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.4.4",
-    "@types/react": "^16.8.19",
-    "@types/react-dom": "^16.8.4",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "@babel/polyfill": "^7.4.4"
   }
 }

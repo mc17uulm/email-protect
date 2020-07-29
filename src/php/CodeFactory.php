@@ -47,11 +47,11 @@ final class CodeFactory
     {
         if($js) {
             $enc_mail = $this->encrypt_by_caesar($mail);
-            return empty($text) ?
+            return $text === '' ?
                 "<a href='#' name='mail-encrypt-tag' value='$enc_mail'>$enc_mail</a>" :
                 "<a href='#' name='mail-encrypt-tag' value='$enc_mail'>" . $this->encrypt_by_caesar($text) . "</a>";
         } else {
-            return empty($text) ?
+            return $text === '' ?
                 "<a href='" . $this->encrypt_to_ascii("mailto:$mail") . "'>" . $this->encrypt_to_ascii($mail) . "</a>" :
                 "<a href='" . $this->encrypt_to_ascii("mailto:$mail") . "'>" . $this->encrypt_to_ascii($text) . "</a>";
         }

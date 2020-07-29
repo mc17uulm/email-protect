@@ -2,6 +2,10 @@
 
 namespace MailEncrypt;
 
+require_once __DIR__ . "/CodeFactory.php";
+
+use MailEncrypt\CodeFactory;
+
 /**
  * Class MailEncrypt
  * @package MailEncrypt
@@ -21,7 +25,12 @@ final class MailEncrypt
             return "<strong>Error:</strong> [mail_encrypt] shortcode arguments are invalid.";
         }
 
+        if(empty($attributes['text'])) {
+            $attributes['text'] = '';
+        }
 
+        $factory = new CodeFactory();
+        return $factory->mail_to_code($attributes['mail'], $attributes['text'], $attributes['js'] === "true");
     }
 
 }

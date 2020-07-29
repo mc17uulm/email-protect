@@ -1,10 +1,11 @@
 const {resolve} = require('path');
 
 module.exports = {
+    entry: resolve(__dirname, 'src/ts/'),
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
+                test: /\.(js)$/,
                 exclude: [
                     /node_modules/,
                     /dist/,
@@ -14,7 +15,7 @@ module.exports = {
                     loader: "babel-loader"
                 }
             }, {
-                test: /\.(ts|tsx)$/,
+                test: /\.(ts)$/,
                 exclude: [
                     /node_modules/,
                     /vendor/
@@ -29,9 +30,9 @@ module.exports = {
     },
     output: {
         filename: "mail_crypter_admin.js",
-        path: resolve(__dirname, "js")
+        path: resolve(__dirname, "dist/js/")
     },
     resolve: {
-        extensions: [".js", ".jsx", ".ts", ".tsx"]
+        extensions: [".js", ".ts"]
     }
 };
