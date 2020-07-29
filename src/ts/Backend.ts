@@ -1,7 +1,7 @@
 class Backend
 {
 
-    public static encrypt_to_ascii(str : string) : string
+    public static encrypt(str : string) : string
     {
         return str
             .split("")
@@ -11,16 +11,6 @@ class Backend
             .reduce((carry : string, item : number) => {
                 return `${carry}&#${item};`;
             }, "");
-    }
-
-    public static encrypt_by_caesar(str : string) : string
-    {
-        return str
-            .split("")
-            .map((char : string) => {
-                return String.fromCharCode(char.charCodeAt(0) + 2);
-            })
-            .join("");
     }
 
     public static register_form() : void {
@@ -60,13 +50,13 @@ class Backend
         if(valid) {
             const email = document.querySelector('input[name=mail_enc_email]').nodeValue;
             const type = document.querySelector('input[name=tag]:checked').nodeValue;
-            const enc_email = this.encrypt_to_ascii(email);
+            const enc_email = this.encrypt(email);
 
             let output : string;
             if(type === "0") {
                 output = enc_email;
             } else {
-                output = `<a href="${this.encrypt_to_ascii(`mailto:${email}`)}">${enc_email}</a>`;
+                output = `<a href="${this.encrypt(`mailto:${email}`)}">${enc_email}</a>`;
             }
 
             document.querySelector('#mail_enc_output').nodeValue = output;
