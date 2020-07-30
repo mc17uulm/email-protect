@@ -4,7 +4,12 @@
   "description": "Secures your mail addresses from spam bots. Use the [mail-crypt] shortcode to add encrypted mail addresses to your page",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --mode development --watch"
+    "tsc": "tsc",
+    "build": "wp-scripts build src/ts/mail-encrypt-gutenberg.js --output-path=./dist/js/ && tsc",
+    "format:js": "wp-scripts format-js",
+    "lint-js": "wp-scripts lint-js",
+    "packages-update": "wp-scripts packages-update",
+    "start": "wp-scripts start"
   },
   "repository": {
     "type": "git",
@@ -22,6 +27,8 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
+    "@wordpress/env": "^1.6.0",
+    "@wordpress/scripts": "^12.1.1",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
     "loader-utils": "^2.0.0",

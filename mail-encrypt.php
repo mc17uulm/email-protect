@@ -19,6 +19,8 @@ If there are problems, bugs or errors, please report on github: https://github.c
 
  */
 
+if (!defined('ABSPATH')) exit;
+
 require_once __DIR__ . '/src/php/MailEncrypt.php';
 require_once __DIR__ . '/src/php/Loader.php';
 require_once __DIR__ . '/src/php/CodeFactory.php';
@@ -30,6 +32,9 @@ use MailEncrypt\MailEncrypt;
 use MailEncrypt\Loader;
 use MailEncrypt\TinyMCE;
 use MailEncrypt\views\AdminPage;
+
+$base = plugin_dir_url(__FILE__);
+Loader::set_base($base);
 
 $instance = new MailEncrypt();
 
@@ -66,4 +71,8 @@ add_action('admin_menu', function() {
 
 add_action('admin_head', function() {
     TinyMCE::register_mce_button();
+});
+
+add_action('enqueue_block_editor_assets', function() {
+    Loader::activate_gutenberg_support();
 });
