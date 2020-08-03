@@ -1,4 +1,4 @@
-class MailEncryptBackend
+class Backend
 {
 
     public static encrypt(str : string) : string
@@ -16,8 +16,8 @@ class MailEncryptBackend
     public static register_form() : void {
 
         const submit_btn = document.getElementById('mail_enc_submit_btn');
-        submit_btn.addEventListener('click', MailEncryptBackend.submit);
-        document.querySelector('#mail_enc_form input[required=true]').addEventListener('keyup', MailEncryptBackend.keyup);
+        submit_btn.addEventListener('click', Backend.submit);
+        document.querySelector('#mail_enc_form input[required=true]').addEventListener('keyup', Backend.keyup);
     }
 
     static keyup(e: KeyboardEvent) : void {
@@ -70,6 +70,6 @@ class MailEncryptBackend
 
 (() => {
 
-    MailEncryptBackend.register_form();
+    Backend.register_form();
 
 })();

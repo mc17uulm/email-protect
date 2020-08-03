@@ -1,12 +1,12 @@
 /**
  *
  */
-class MailEncryptFrontend {
+class Frontend {
 
     public static register() : void {
         const links = document.querySelectorAll('a[name=mail-encrypt-tag]');
         links.forEach((elem: HTMLElement) => {
-           elem.addEventListener('click', MailEncryptFrontend.onclick);
+           elem.addEventListener('click', Frontend.onclick);
            elem.innerText = this.decrypt(elem.innerText);
         });
     }
@@ -14,7 +14,7 @@ class MailEncryptFrontend {
     public static onclick(e : MouseEvent) : void {
         if(e.target instanceof HTMLElement) {
             e.preventDefault();
-            window.location.href = `mailto:${MailEncryptFrontend.decrypt(e.target.getAttribute('value'))}`;
+            window.location.href = `mailto:${Frontend.decrypt(e.target.getAttribute('value'))}`;
         }
     }
 
@@ -31,5 +31,5 @@ class MailEncryptFrontend {
 }
 
 (() => {
-    MailEncryptFrontend.register();
+    Frontend.register();
 })();

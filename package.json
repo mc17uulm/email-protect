@@ -5,11 +5,8 @@
   "main": "index.js",
   "scripts": {
     "tsc": "tsc",
-    "build": "wp-scripts build src/ts/mail-encrypt-gutenberg.js --output-path=./dist/js/ && tsc",
-    "format:js": "wp-scripts format-js",
-    "lint-js": "wp-scripts lint-js",
-    "packages-update": "wp-scripts packages-update",
-    "start": "wp-scripts start"
+    "start": "webpack --mode development --watch",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -27,11 +24,13 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
+    "@types/wordpress__block-editor": "^2.2.8",
     "@wordpress/env": "^1.6.0",
     "@wordpress/scripts": "^12.1.1",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
     "loader-utils": "^2.0.0",
+    "nodemon": "^2.0.4",
     "source-map-loader": "^0.2.4",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.1",
