@@ -1,23 +1,13 @@
-class Backend
-{
+import MailEncrypt from "../MailEncrypt";
 
-    public static encrypt(str : string) : string
-    {
-        return str
-            .split("")
-            .map((char : string) => {
-                return char.charCodeAt(0);
-            })
-            .reduce((carry : string, item : number) => {
-                return `${carry}&#${item};`;
-            }, "");
-    }
+class MailEncryptBackend
+{
 
     public static register_form() : void {
 
         const submit_btn = document.getElementById('mail_enc_submit_btn');
-        submit_btn.addEventListener('click', Backend.submit);
-        document.querySelector('#mail_enc_form input[required=true]').addEventListener('keyup', Backend.keyup);
+        submit_btn.addEventListener('click', MailEncryptBackend.submit);
+        document.querySelector('#mail_enc_form input[required=true]').addEventListener('keyup', MailEncryptBackend.keyup);
     }
 
     static keyup(e: KeyboardEvent) : void {
@@ -50,13 +40,13 @@ class Backend
         if(valid) {
             const email = document.querySelector('input[name=mail_enc_email]').nodeValue;
             const type = document.querySelector('input[name=tag]:checked').nodeValue;
-            const enc_email = this.encrypt(email);
+            const enc_email = MailEncrypt.encrypt(email);
 
             let output : string;
             if(type === "0") {
                 output = enc_email;
             } else {
-                output = `<a href="${this.encrypt(`mailto:${email}`)}">${enc_email}</a>`;
+                output = `<a href="${MailEncrypt.encrypt(`mailto:${email}`)}">${enc_email}</a>`;
             }
 
             document.querySelector('#mail_enc_output').nodeValue = output;
@@ -70,6 +60,6 @@ class Backend
 
 (() => {
 
-    Backend.register_form();
+    MailEncryptBackend.register_form();
 
 })();

@@ -1,5 +1,5 @@
 import { Component } from  "@wordpress/element";
-import { RichTextToolbarButton } from '@wordpress/block-editor';
+import {BlockIcon, RichTextToolbarButton} from '@wordpress/block-editor';
 import React from "react";
 
 interface ToolbarButtonProps {
@@ -18,7 +18,7 @@ export default class ToolbarButton extends Component <ToolbarButtonProps, Toolba
     render() {
         return (
             <RichTextToolbarButton
-                icon="editor-underline"
+                icon="post-status"
                 title="Mail Encrypt"
                 isActive={this.props.active}
                 onClick={this.props.action}

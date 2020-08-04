@@ -24,6 +24,7 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
+    "@types/email-validator": "^1.0.6",
     "@types/wordpress__block-editor": "^2.2.8",
     "@wordpress/env": "^1.6.0",
     "@wordpress/scripts": "^12.1.1",
@@ -38,6 +39,7 @@
     "webpack-cli": "^3.3.2"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.4.4"
+    "@babel/polyfill": "^7.4.4",
+    "email-validator": "^2.0.4"
   }
 }

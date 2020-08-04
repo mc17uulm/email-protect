@@ -86,14 +86,27 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/ts/MailEncrypt.ts":
+/*!*******************************!*\
+  !*** ./src/ts/MailEncrypt.ts ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nvar MailEncrypt = /** @class */ (function () {\r\n    function MailEncrypt() {\r\n    }\r\n    MailEncrypt.encrypt = function (str) {\r\n        return str\r\n            .split(\"\")\r\n            .map(function (char) {\r\n            return char.charCodeAt(0);\r\n        })\r\n            .reduce(function (carry, item) {\r\n            return carry + \"&#\" + item + \";\";\r\n        }, \"\");\r\n    };\r\n    MailEncrypt.decrypt = function (str) {\r\n        return str\r\n            .split(\"\")\r\n            .map(function (char) {\r\n            return String.fromCharCode(char.charCodeAt(0) - 2);\r\n        })\r\n            .join(\"\");\r\n    };\r\n    return MailEncrypt;\r\n}());\r\nexports.default = MailEncrypt;\r\n\n\n//# sourceURL=webpack:///./src/ts/MailEncrypt.ts?");
+
+/***/ }),
+
 /***/ "./src/ts/frontend/index.ts":
 /*!**********************************!*\
   !*** ./src/ts/frontend/index.ts ***!
   \**********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("/**\r\n *\r\n */\r\nvar Frontend = /** @class */ (function () {\r\n    function Frontend() {\r\n    }\r\n    Frontend.register = function () {\r\n        var _this = this;\r\n        var links = document.querySelectorAll('a[name=mail-encrypt-tag]');\r\n        links.forEach(function (elem) {\r\n            elem.addEventListener('click', Frontend.onclick);\r\n            elem.innerText = _this.decrypt(elem.innerText);\r\n        });\r\n    };\r\n    Frontend.onclick = function (e) {\r\n        if (e.target instanceof HTMLElement) {\r\n            e.preventDefault();\r\n            window.location.href = \"mailto:\" + Frontend.decrypt(e.target.getAttribute('value'));\r\n        }\r\n    };\r\n    Frontend.decrypt = function (str) {\r\n        return str\r\n            .split(\"\")\r\n            .map(function (char) {\r\n            return String.fromCharCode(char.charCodeAt(0) - 2);\r\n        })\r\n            .join(\"\");\r\n    };\r\n    return Frontend;\r\n}());\r\n(function () {\r\n    Frontend.register();\r\n})();\r\n\n\n//# sourceURL=webpack:///./src/ts/frontend/index.ts?");
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n/**\r\n *\r\n */\r\nvar MailEncrypt_1 = __importDefault(__webpack_require__(/*! ../MailEncrypt */ \"./src/ts/MailEncrypt.ts\"));\r\nvar MailEncryptFrontend = /** @class */ (function () {\r\n    function MailEncryptFrontend() {\r\n    }\r\n    MailEncryptFrontend.register = function () {\r\n        var links = document.querySelectorAll('a[name=mail-encrypt-tag]');\r\n        links.forEach(function (elem) {\r\n            elem.addEventListener('click', MailEncryptFrontend.onclick);\r\n            elem.innerText = MailEncrypt_1.default.decrypt(elem.innerText);\r\n        });\r\n    };\r\n    MailEncryptFrontend.onclick = function (e) {\r\n        if (e.target instanceof HTMLElement) {\r\n            e.preventDefault();\r\n            window.location.href = \"mailto:\" + MailEncrypt_1.default.decrypt(e.target.getAttribute('value'));\r\n        }\r\n    };\r\n    return MailEncryptFrontend;\r\n}());\r\n(function () {\r\n    MailEncryptFrontend.register();\r\n})();\r\n\n\n//# sourceURL=webpack:///./src/ts/frontend/index.ts?");
 
 /***/ })
 

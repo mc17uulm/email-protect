@@ -42,6 +42,10 @@ add_shortcode('mail_crypt', function($attributes) use ($instance) {
     return $instance->generate_shortcode($attributes);
 });
 
+add_shortcode('mail_encrypt', function($attributes) use ($instance) {
+    return $instance->generate_shortcode($attributes);
+});
+
 add_action('wp_enqueue_scripts', function () {
     Loader::activate_frontend_scripts();
 });

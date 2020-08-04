@@ -37,14 +37,7 @@ Now your email address isn't visible anymore for spam bots. You can also encrypt
 
 #### Javascript:
 
-Only add the `js` attribute to your shortcode: `[mail_encrypt mail="your@mailaddress.com" text="My Name via js" js="true"]`
-
-Result on your page: [My Name via js](mailto:your@mailaddress.com)
-
-Sourcecode:
-```html
-<a href='#' name='mail-encrypt-href' value='{qwtBockncfftguu0eqo'>O{"Pcog</a>`
-```
+*deprecated since v3.0*
 
 ---
 

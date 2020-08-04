@@ -4,6 +4,8 @@ import { toggleFormat, Value } from '@wordpress/rich-text';
 import ToolbarButton from "./ToolbarButton";
 import MailPopover, {MailPopoverValues} from "./MailPopover";
 import React from "react";
+import * as EmailValidator from 'email-validator';
+import MailEncrypt from "../../MailEncrypt";
 
 interface ExtendedEditorProps {
     onChange: (val: any) => any,
@@ -13,8 +15,8 @@ interface ExtendedEditorProps {
 
 interface ExtendedEditorState {
     visible: boolean,
-    data: MailPopoverValues
-    selected: string
+    mail: string,
+    text: string
 }
 
 export default class ExtendedEditor extends Component<ExtendedEditorProps, ExtendedEditorState>
@@ -25,61 +27,78 @@ export default class ExtendedEditor extends Component<ExtendedEditorProps, Exten
 
         this.state = {
             visible: false,
-            data : {
-                mail: '',
-                text: ''
-            },
-            selected: ''
+            mail: '',
+            text: ''
         };
 
         this.onToggle = this.onToggle.bind(this);
-        this.add = this.add.bind(this);
         this.toggle = this.toggle.bind(this);
         this.update = this.update.bind(this);
+        this.show = this.show.bind(this);
+        this.hide = this.hide.bind(this);
+        this.save = this.save.bind(this);
     }
 
     async onToggle() : Promise<void> {
         if(this.props.isActive) {
             await this.setState({
                 visible: false,
-                selected: ''
+                mail: '',
+                text: ''
             });
             await this.toggle();
         } else {
-            const selected = this.props.value.text.substr(this.props.value.start, this.props.value.end);
-            await this.setState({selected: selected});
+            const selected = this.props.value.text.substring(this.props.value.start, this.props.value.end);
+            if(EmailValidator.validate(selected)) {
+                await this.setState({
+                    mail: selected
+                });
+            } else {
+                await this.setState({
+                    text: selected
+                });
+            }
             this.setState({visible: true});
         }
     }
 
-    async add(state : MailPopoverValues) : Promise<void> {
-        await this.setState({
-            data: {
-                mail: state.mail,
-                text: state.text
-            },
-            visible: false
-        });
-        await this.toggle();
-    }
-
-    async toggle() : Promise<void> {
+    async toggle(mail: string = '', text: string = '') : Promise<void> {
         await this.props.onChange(
             toggleFormat(this.props.value, {
                 type: 'mail-encrypt/encrypt',
                 attributes: {
-                    classname: 'mail-encrypt-str'
+                    href: `mailto:${mail}`
                 }
             })
         );
     }
 
-    update(id : keyof MailPopoverValues, value : string) : void {
-        let d = this.state.data;
-        d[id] = value;
-        this.setState({
-            data: d
+    async save() : Promise<void> {
+        const mail : string = MailEncrypt.encrypt(this.state.mail);
+        let text : string = this.state.text;
+        if(text === '') {
+            text = mail;
+        }
+        await this.hide();
+        await this.toggle(mail, text);
+    }
+
+    async hide() : Promise<void> {
+        await this.setState({
+            visible: false,
+            mail: '',
+            text: ''
         });
+    }
+
+    async show() : Promise<void> {
+        await this.setState({visible: true});
+    }
+
+    async update(id : keyof MailPopoverValues, value : any) : Promise<void> {
+        await this.setState({
+            [id]: value
+        } as Pick<MailPopoverValues, keyof MailPopoverValues>);
     }
 
     render() {
@@ -91,8 +110,12 @@ export default class ExtendedEditor extends Component<ExtendedEditorProps, Exten
                 />
                 <MailPopover
                     visible={this.state.visible}
-                    selected={this.state.selected}
+                    mail={this.state.mail}
+                    text={this.state.text}
                     update={this.update}
+                    show={this.show}
+                    hide={this.hide}
+                    save={this.save}
                 />
             </Fragment>
         );
