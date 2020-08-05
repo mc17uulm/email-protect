@@ -36,7 +36,6 @@ registerBlockType('mail-encrypt/block', {
         return (
             <RichText.Content
                 value={EditorHandler.save(props.attributes.content)}
-                className={props.className}
             />
         )
     }
