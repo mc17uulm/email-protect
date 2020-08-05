@@ -2,3 +2,6 @@
 .vscode/
 node_modules/
 vendor/
+build/
+dist/js/*
+mail-encrypt.zip

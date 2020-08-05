@@ -1,0 +1,17 @@
+#!/bin/bash
+
+cwd=$(pwd)
+build=$cwd/build
+
+rm -rf $build
+mkdir $build
+mkdir $build/dist
+
+yarn build
+
+cp -r "$cwd/dist/"* "$build/dist/"
+cp "$cwd/index.php" "$build/"
+cp "$cwd/mail-encrypt.php" "$build/"
+cp "$cwd/readme.txt" "$build/"
+
+zip -r mail-encrypt.zip build/
