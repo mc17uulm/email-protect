@@ -30,9 +30,12 @@
     "@wordpress/scripts": "^12.1.1",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
+    "css-loader": "^4.2.0",
     "loader-utils": "^2.0.0",
     "nodemon": "^2.0.4",
+    "sass-loader": "^9.0.3",
     "source-map-loader": "^0.2.4",
+    "style-loader": "^1.2.1",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.1",
     "webpack": "^4.32.2",
@@ -40,6 +43,10 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
-    "email-validator": "^2.0.4"
+    "@types/react": "^16.9.44",
+    "@types/react-dom": "^16.9.8",
+    "email-validator": "^2.0.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   }
 }

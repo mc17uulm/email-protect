@@ -6,6 +6,8 @@ build=$cwd/build
 rm -rf $build
 mkdir $build
 mkdir $build/dist
+mkdir $build/src
+mkdir $build/src/php
 
 yarn build
 
@@ -13,5 +15,6 @@ cp -r "$cwd/dist/"* "$build/dist/"
 cp "$cwd/index.php" "$build/"
 cp "$cwd/mail-encrypt.php" "$build/"
 cp "$cwd/readme.txt" "$build/"
+cp -r "$cwd/src/php/"* "$build/src/php/"
 
 zip -r mail-encrypt.zip build/

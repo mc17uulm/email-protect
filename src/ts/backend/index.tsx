@@ -1,13 +1,21 @@
 import MailEncrypt from "../MailEncrypt";
+import ReactDOM from "react-dom";
+import React from "react";
+import App from "./App";
 
 class MailEncryptBackend
 {
 
+    public static register_react() : void {
+        const elem = document.getElementById('mail-encrypt-app');
+        elem ? ReactDOM.render(<App />, elem) : false;
+    }
+
     public static register_form() : void {
 
-        const submit_btn = document.getElementById('mail_enc_submit_btn');
+        /**const submit_btn = document.getElementById('mail_enc_submit_btn');
         submit_btn.addEventListener('click', MailEncryptBackend.submit);
-        document.querySelector('#mail_enc_form input[required=true]').addEventListener('keyup', MailEncryptBackend.keyup);
+        document.querySelector('#mail_enc_form input[required=true]').addEventListener('keyup', MailEncryptBackend.keyup);*/
     }
 
     static keyup(e: KeyboardEvent) : void {
@@ -60,6 +68,6 @@ class MailEncryptBackend
 
 (() => {
 
-    MailEncryptBackend.register_form();
+    MailEncryptBackend.register_react();
 
 })();

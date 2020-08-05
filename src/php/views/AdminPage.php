@@ -12,7 +12,7 @@ class AdminPage implements Viewable
     public static function render() : void
     {
         ?>
-        <div id="mail-cryper-app"></div>
+        <div id="mail-encrypt-app"></div>
         <?php
     }
 

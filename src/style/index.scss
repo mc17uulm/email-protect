@@ -1,0 +1,31 @@
+.mail-encrypt-form-group {
+  margin-bottom: 10px;
+}
+
+.has-error input {
+  border-color: red !important;
+}
+
+.mail-encrypt-radio {
+  margin-right: 10px;
+}
+
+.mail-encrypt-input {
+  width: 50%;
+  margin-top: 10px;
+}
+
+.mail-encrypt-help-block {
+  display: inline-block;
+  margin-top: 10px;
+  color: red;
+  width: 100%;
+}
+
+.mail-encrypt-pre {
+  display: block;
+  overflow: auto;
+  width: 50%;
+  background-color: white;
+  color: black;
+}
