@@ -1,28 +1,43 @@
-import { registerFormatType } from '@wordpress/rich-text';
-import ExtendedEditor from "./block/ExtendedEditor";
+import { registerBlockType } from "@wordpress/blocks";
+import { RichText } from "@wordpress/block-editor";
+import EditorHandler from "./EditorHandler";
 
-registerFormatType(
-    'mail-encrypt/encrypt', {
-        name: 'mail-encrypt/encrypt',
-        title: 'Mail Encrypt',
-        tagName: 'a',
-        attributes: {
-            link: {
-                type: 'string'
-            },
-            text: {
-                type: 'string'
-            }
-        },
-        className: 'mail-encrypt-body',
-        edit({isActive, value, onChange}) {
-            return (
-                <ExtendedEditor
-                    isActive={isActive}
-                    value={value}
-                    onChange={onChange}
-                />
-            )
+registerBlockType('mail-encrypt/block', {
+    title: 'Secure Mail in Text',
+    icon: 'post-status',
+    category: 'layout',
+    attributes: {
+        content: {
+            type: 'array',
+            source: 'children'
         }
+    },
+    edit: (props) => {
+
+        const content = EditorHandler.load_content(props.attributes.content);
+
+        const onChangeContent = (newContent) => {
+            props.setAttributes({ content: newContent });
+        }
+
+        return (
+            <RichText
+                key='editable'
+                tagName='p'
+                className={props.className}
+                onChange={onChangeContent}
+                value={content}
+                keepPlaceholderOnFocus={true}
+            />
+        )
+
+    },
+    save: (props) => {
+        return (
+            <RichText.Content
+                value={EditorHandler.save(props.attributes.content)}
+                className={props.className}
+            />
+        )
     }
-);
+});
