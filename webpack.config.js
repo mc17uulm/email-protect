@@ -33,16 +33,7 @@ const backend = Object.assign({}, config, {
     name: "backend",
     entry: "./src/ts/backend/",
     module: {
-        rules: [
-            ...rules,
-            {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader']
-            }, {
-                test: /\.scss$/,
-                use: ['style-loader', 'css-loader', 'sass-loader']
-            }
-        ]
+        rules: rules
     },
     output: {
         filename: 'mail-encrypt-backend.js',
