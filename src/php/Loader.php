@@ -31,12 +31,6 @@ final class Loader
         );
         wp_enqueue_style('bootstrap_css', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css', array(), false, 'all');
         wp_enqueue_script('bootstrap_js', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', array('jquery'), null, false);
-        wp_enqueue_style(
-            'mail_encrypt_backend.css',
-            self::$base . 'dist/css/mail-encrypt-backend.css',
-            false,
-            'all'
-        );
         wp_localize_script(
             'mail_encrypt_backend.js',
             'mail_encrypt_lang',

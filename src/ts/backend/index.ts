@@ -38,10 +38,12 @@ class MailEncryptBackend
 
             if(valid) {
                 const email = mail_input.value;
-                const type = document.querySelector('input[name=mail-encrypt-type]:checked').nodeValue;
+                // @ts-ignore
+                const type = document.querySelector('input[name=mail-encrypt-type]:checked').value;
                 const enc_email = MailEncrypt.encrypt(email);
 
                 let output : string;
+                console.log(type);
                 if(type === "0") {
                     output = enc_email;
                 } else {
@@ -50,8 +52,16 @@ class MailEncryptBackend
 
                 // @ts-ignore
                 document.querySelector('#mail-encrypt-output-field').value = output;
-                document.querySelector('#mail-encrypt-html-field').innerHTML = output;
-                document.querySelector('#mail-encrypt-source-field').innerHTML = `<span style="white-space: pre;">${output}</span>`;
+                document.querySelector('#mail-encrypt-html-field').innerHTML = `
+                    <p>
+                        ${output}
+                    </p>
+                `;
+                document.querySelector('#mail-encrypt-source-field').innerHTML = `
+                    <p>
+                        <xmp style="display: block; overflow: auto">${output}</xmp>
+                    </p>
+                `;
             }
         }
 
