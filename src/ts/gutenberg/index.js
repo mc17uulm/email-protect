@@ -3,7 +3,7 @@ import { RichText } from "@wordpress/block-editor";
 import EditorHandler from "./EditorHandler";
 
 registerBlockType('mail-encrypt/block', {
-    title: 'Secure Mail in Text',
+    title: 'MailEncrypt Block',
     icon: 'post-status',
     category: 'layout',
     attributes: {

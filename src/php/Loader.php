@@ -31,11 +31,6 @@ final class Loader
         );
         wp_enqueue_style('bootstrap_css', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css', array(), false, 'all');
         wp_enqueue_script('bootstrap_js', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', array('jquery'), null, false);
-        wp_localize_script(
-            'mail_encrypt_backend.js',
-            'mail_encrypt_lang',
-            ['ajax_url' => admin_url('admin-ajax.php')]
-        );
     }
 
     public static function activate_gutenberg_support() : void {
@@ -60,6 +55,10 @@ final class Loader
 
     public static function set_base(string $base) : void {
         self::$base = $base;
+    }
+
+    public static function get_base() : string {
+        return self::$base;
     }
 
 }

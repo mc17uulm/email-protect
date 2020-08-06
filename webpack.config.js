@@ -77,6 +77,21 @@ const frontend = Object.assign({}, config, {
     }
 });
 
+const tinymce = Object.assign({}, config, {
+    name: "tinymce",
+    entry: './src/ts/tinymce',
+    module: {
+        rules: rules
+    },
+    output: {
+        filename: 'mail-encrypt-mce-script.js',
+        path: resolve(__dirname, 'dist/js/')
+    },
+    resolve: {
+        extensions: [".js", ".jsx", ".ts", ".tsx"]
+    }
+});
+
 module.exports = [
-    backend, gutenberg, frontend
+    backend, gutenberg, frontend, tinymce
 ];

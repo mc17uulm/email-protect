@@ -80,3 +80,11 @@ add_action('admin_head', function() {
 add_action('enqueue_block_editor_assets', function() {
     Loader::activate_gutenberg_support();
 });
+
+add_action('plugin_loaded', function() {
+   load_plugin_textdomain(
+       'mail_encrypt_lang',
+       false,
+       basename(dirname(__FILE__)) . '/dist/lang/'
+   );
+});

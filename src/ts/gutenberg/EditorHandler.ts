@@ -49,7 +49,6 @@ export default class EditorHandler
                 content = content.concat(this.handle_string(el));
             } else if(el.type === "span" && el.props.class === this.indicator) {
                 const value = el.props.children[0];
-                console.log("span value: ", value);
                 if(EmailValidator.validate(value)) {
                     content.push(el);
                 } else {
@@ -97,7 +96,6 @@ export default class EditorHandler
             if(typeof el !== "string") {
                 if(el.type === "span" && el.props.class === this.indicator) {
                     const encrypted = MailEncrypt.encrypt(el.props.children[0]);
-                    console.log("save value: ", el.props.children[0]);
                     content.push({
                         type: 'a',
                         props: {

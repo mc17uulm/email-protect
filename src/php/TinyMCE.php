@@ -2,6 +2,8 @@
 
 namespace MailEncrypt;
 
+require_once __DIR__ . "/Loader.php";
+
 /**
  * Class TinyMCE
  * @package MailEncrypt
@@ -23,15 +25,15 @@ final class TinyMCE
 
             add_filter('mce_external_plugins', function(array $plugins) {
                 add_filter('mce_external_languages', function(array $locales) {
-                    $locales['mail_enc'] = plugin_dir_url(__FILE__) . "/../dist/lang/mail-enc-mce-locale.php";
+                    $locales['mail_encrypt'] = Loader::get_base() . "dist/lang/mail-encrypt-mce-locale.php";
                     return $locales;
                 });
-                $plugins['mail_enc_mce_button'] = plugin_dir_url(__FILE__) . "/../dist/js/mail-encrypt-mce-script.js";
+                $plugins['mail_encrypt_mce_button'] = Loader::get_base() . "dist/js/mail-encrypt-mce-script.js";
                 return $plugins;
             });
 
             add_filter('mce_buttons', function(array $buttons) {
-                array_push($buttons, 'mail_enc_mce_button');
+                array_push($buttons, 'mail_encrypt_mce_button');
                 return $buttons;
             });
 

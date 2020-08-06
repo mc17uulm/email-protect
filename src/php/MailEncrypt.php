@@ -4,8 +4,6 @@ namespace MailEncrypt;
 
 require_once __DIR__ . "/CodeFactory.php";
 
-use MailEncrypt\CodeFactory;
-
 /**
  * Class MailEncrypt
  * @package MailEncrypt
