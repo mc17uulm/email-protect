@@ -14,17 +14,26 @@ interface Content {
 export default class EditorHandler
 {
 
-    private static classname = 'mail-encrypt-body';
+    private static tag = 'mail-encrypt-body';
+    private static indicator = 'mail-encrypt-indicator';
 
-    public static load_content(contents : Content[]) : Content[]
+    public static load_content(contents : (Content | string) []) : (Content | string) []
     {
         if(contents.length > 0) {
-            if(contents[0].type === 'p' && contents[0].props.class === "wp-block-mail-encrypt-block") {
-                contents = contents[0].props.children;
+            if(typeof contents[0] !== "string") {
+                if(contents[0].type === 'p' && contents[0].props.class === "wp-block-mail-encrypt-block") {
+                    contents = contents[0].props.children;
+                }
             }
             return contents.map((el: Content) => {
-                if(el.type === 'a' && el.props.class === this.classname) {
-                    return el.props.children[0];
+                if(el.type === 'a' && el.props.class === this.tag) {
+                    return {
+                        type: 'span',
+                        props: {
+                            children: el.props.children,
+                            class: this.indicator
+                        }
+                    };
                 } else {
                     return el;
                 }
@@ -33,48 +42,86 @@ export default class EditorHandler
         return contents;
     }
 
-    public static save(contents : Content[]) : Content[]
-    {
-        let renderedContent = [];
+    public static onchange(contents : (Content | string) []) : (Content | string) [] {
+        let content = [];
         contents.forEach((el : Content | string) => {
             if(typeof el === "string") {
-                const parts = el.split(" ");
-                let str_ = "";
-                parts.forEach((part, i) => {
-                    if(EmailValidator.validate(part)) {
-                        renderedContent.push(str_);
-                        str_ = " ";
-                        const encrypted = MailEncrypt.encrypt(part);
-                        renderedContent.push({
-                            type: 'a',
-                            props: {
-                                children: [encrypted],
-                                href: `mailto:${encrypted}`,
-                                class: 'mail-encrypt-body'
-                            }
-                        });
-                    } else {
-                        if(i < parts.length - 1) {
-                            str_ += `${part} `;
-                        } else {
-                            str_ += part;
-                        }
+                content = content.concat(this.handle_string(el));
+            } else if(el.type === "span" && el.props.class === this.indicator) {
+                const value = el.props.children[0];
+                console.log("span value: ", value);
+                if(EmailValidator.validate(value)) {
+                    content.push(el);
+                } else {
+                    content.push(value);
+                }
+            } else {
+                content.push(el);
+            }
+        });
+        return content;
+    }
+
+    private static handle_string(str : string) : (Content | string) [] {
+        const parts = str.split(" ");
+        let str_ = "";
+        let content = [];
+        parts.forEach((part, i) => {
+            if(EmailValidator.validate(part)) {
+                content.push(str_);
+                str_ = "";
+                content.push({
+                    type: 'span',
+                    props: {
+                        children: part,
+                        class: this.indicator
                     }
                 });
-                renderedContent.push(str_);
+                content.push(" ");
             } else {
-                renderedContent.push(el);
+                if(i < parts.length - 1) {
+                    str_ += `${part} `;
+                } else {
+                    str_ += part;
+                }
+            }
+        });
+        content.push(str_);
+        return content;
+    }
+
+    public static save(contents : Content[]) : Content[]
+    {
+        let content = [];
+        contents.forEach((el : Content | string) => {
+            if(typeof el !== "string") {
+                if(el.type === "span" && el.props.class === this.indicator) {
+                    const encrypted = MailEncrypt.encrypt(el.props.children[0]);
+                    console.log("save value: ", el.props.children[0]);
+                    content.push({
+                        type: 'a',
+                        props: {
+                            children: [encrypted],
+                            href: `mailto:${encrypted}`,
+                            class: this.tag
+                        }
+                    });
+                } else {
+                    content.push(el);
+                }
+            } else {
+                content.push(el);
             }
         });
 
-        if(renderedContent[0].type === 'p' && renderedContent[0].props.class === "wp-block-mail-encrypt-block") {
-            return renderedContent;
+        if(content[0].type === 'p' && content[0].props.class === "wp-block-mail-encrypt-block") {
+            return content;
         } else {
             return [{
                 type: 'p',
                 props: {
                     class: "wp-block-mail-encrypt-block",
-                    children: renderedContent
+                    children: content
                 }
             }];
         }

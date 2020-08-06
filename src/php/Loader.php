@@ -37,6 +37,12 @@ final class Loader
     }
 
     public static function activate_gutenberg_support() : void {
+        wp_enqueue_style(
+            'mail_encrypt_gutenberg.css',
+            self::$base . 'dist/css/mail-encrypt-gutenberg.css',
+            false,
+            'all'
+        );
         wp_enqueue_script(
             'mail_encrypt_gutenberg.js',
             self::$base . 'dist/js/mail-encrypt-gutenberg.js',

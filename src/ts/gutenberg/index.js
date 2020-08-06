@@ -17,7 +17,7 @@ registerBlockType('mail-encrypt/block', {
         const content = EditorHandler.load_content(props.attributes.content);
 
         const onChangeContent = (newContent) => {
-            props.setAttributes({ content: newContent });
+            props.setAttributes({ content: EditorHandler.onchange(newContent) });
         }
 
         return (
