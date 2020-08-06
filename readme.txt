@@ -1,4 +1,4 @@
-=== Mail Enrypt ===
+=== Mail Encrypt ===
 Contributors: mc17
 Tags: mail, email, security, protection, encryption, spam, bots, secure, encrypt, protect, easy, fast
 Requires at least: 4.4.1
@@ -12,6 +12,7 @@ Simple and easy to use plugin to protect your email addresses of spam bots. With
 == Description ==
 # WP Mail Encrypt
 <sup>Version 3.0</sup>
+
 <sup>til version 3.0 known as 'Mail Crypter'</sup>
 
 ## Wordpress anti-spam mail plugin
@@ -45,6 +46,7 @@ the associated sourcecode.
 #### Javascript
 
 *deprecated since v3.0*
+
 *older shortcodes with js active are still working*
 
 ---
@@ -68,12 +70,12 @@ In the sourcecode the email address can not be found by a spam bot:
 The full sourcecode can be found on github:
 
 **github.com:**
-[https://github.com/mc17uulm/wp-mail-crypter](https://github.com/mc17uulm/wp-mail-crypter)
+[https://github.com/mc17uulm/wp-mail-encrypt](https://github.com/mc17uulm/wp-mail-encrypt)
 
 == Installation ==
 1. Download zip and upload via wordpress installer, or search in plugins menu for "Mail Encrypt" and install plugin
 2. Activated plugin
-3. Use the `[mail_encrypt]` shortcode or our 'MailEncryt Block' Gutenberg block to protect your email addresses secure and fast!
+3. Use the `[mail_encrypt]` shortcode or our 'MailEncrypt Block' Gutenberg block to protect your email addresses secure and fast!
 
 == Screenshots ==
 1. You can encrypt your mail address directly in the menu
