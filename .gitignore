@@ -5,3 +5,4 @@ vendor/
 build/
 dist/js/*
 mail-encrypt.zip
+yarn-error.log

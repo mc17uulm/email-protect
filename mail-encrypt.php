@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Mail Encrypt
-Description: Secures your mail addresses from spam bots. Use the [mail-crypt] shortcode to add encrypted mail addresses to your page
+Description: Simple and easy to use plugin to protect your email addresses of spam bots. With the [mail_encrypt] shortcode or our own Gutenberg block, all your email addresses are secure!
 Author: mc17
 Author URI: https://github.com/mc17uulm/wp-mail-crypter
 Version: 3.0
