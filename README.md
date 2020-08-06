@@ -1,5 +1,6 @@
 # WP Mail Encrypt
 <small>Version 3.0</small>
+
 <small>til version 3.0 known as 'Mail Crypter'</small>
 
 ### Wordpress anti-spam mail plugin :lock::e-mail:
@@ -33,6 +34,7 @@ the associated sourcecode.
 #### Javascript
 
 *deprecated since v3.0*
+
 *older shortcodes with js active are still working*
 
 ---
@@ -56,4 +58,4 @@ In the sourcecode the email address can not be found by a spam bot:
 The full sourcecode can be found on github:
 
 **github.com:**
-[https://github.com/mc17uulm/wp-mail-crypter](https://github.com/mc17uulm/wp-mail-crypter)
+[https://github.com/mc17uulm/wp-mail-encrypt](https://github.com/mc17uulm/wp-mail-encrypt)
