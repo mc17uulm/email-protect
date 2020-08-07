@@ -5,9 +5,7 @@ interface Content {
     type: string,
     props?: {
         class?: string,
-        children?: any[],
-        content?: string,
-        href?: string
+        children?: any[]
     }
 }
 
@@ -44,20 +42,41 @@ export default class EditorHandler
 
     public static onchange(contents : (Content | string) []) : (Content | string) [] {
         let content = [];
-        contents.forEach((el : Content | string) => {
+        for(let i = 0; i < contents.length; i++) {
+            const el = contents[i];
             if(typeof el === "string") {
                 content = content.concat(this.handle_string(el));
             } else if(el.type === "span" && el.props.class === this.indicator) {
                 const value = el.props.children[0];
+                console.log("value: ", value);
                 if(EmailValidator.validate(value)) {
-                    content.push(el);
+                    if(
+                        (i < contents.length - 1) &&
+                        (typeof contents[i+1] === "string") &&
+                        // @ts-ignore
+                        (!contents[i+1].startsWith(' ')) &&
+                        (EmailValidator.validate((value + contents[i+1]).trim()))
+                    )  {
+                        console.log("first");
+                        content.push({
+                            type: el.type,
+                            props: {
+                                children: [value + contents[i+1]],
+                                class: el.props.class
+                            }
+                        });
+                        i++;
+                    } else {
+                        console.log("last");
+                        content.push(el);
+                    }
                 } else {
                     content.push(value);
                 }
             } else {
                 content.push(el);
             }
-        });
+        }
         return content;
     }
 
@@ -100,7 +119,7 @@ export default class EditorHandler
                         type: 'a',
                         props: {
                             children: [encrypted],
-                            href: `mailto:${encrypted}`,
+                            href: `${MailEncrypt.encrypt('mailto:')}${encrypted}`,
                             class: this.tag
                         }
                     });
