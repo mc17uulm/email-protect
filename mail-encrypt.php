@@ -44,7 +44,6 @@ require_once __DIR__ . '/src/php/MailEncrypt.php';
 require_once __DIR__ . '/src/php/Loader.php';
 require_once __DIR__ . '/src/php/CodeFactory.php';
 require_once __DIR__ . '/src/php/TinyMCE.php';
-require_once __DIR__ . '/src/php/views/Viewable.php';
 require_once __DIR__ . '/src/php/views/AdminPage.php';
 
 use MailEncrypt\MailEncrypt;

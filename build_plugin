@@ -15,6 +15,7 @@ cp -r "$cwd/dist/"* "$build/dist/"
 cp "$cwd/index.php" "$build/"
 cp "$cwd/mail-encrypt.php" "$build/"
 cp "$cwd/readme.txt" "$build/"
+cp "$cwd/LICENSE" "$build/"
 cp -r "$cwd/src/php/"* "$build/src/php/"
 
 zip -r mail-encrypt.zip build/
