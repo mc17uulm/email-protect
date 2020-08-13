@@ -40,43 +40,35 @@ export default class EditorHandler
         return contents;
     }
 
-    public static onchange(contents : (Content | string) []) : (Content | string) [] {
+    public static onchange(arr : (Content | string) []) : (Content | string) [] {
+        let cleared_arr = this.clear_value(arr);
         let content = [];
-        for(let i = 0; i < contents.length; i++) {
-            const el = contents[i];
+        cleared_arr.forEach((el : Content | string) => {
             if(typeof el === "string") {
                 content = content.concat(this.handle_string(el));
-            } else if(el.type === "span" && el.props.class === this.indicator) {
-                const value = el.props.children[0];
-                console.log("value: ", value);
-                if(EmailValidator.validate(value)) {
-                    if(
-                        (i < contents.length - 1) &&
-                        (typeof contents[i+1] === "string") &&
-                        // @ts-ignore
-                        (!contents[i+1].startsWith(' ')) &&
-                        (EmailValidator.validate((value + contents[i+1]).trim()))
-                    )  {
-                        console.log("first");
-                        content.push({
-                            type: el.type,
-                            props: {
-                                children: [value + contents[i+1]],
-                                class: el.props.class
-                            }
-                        });
-                        i++;
-                    } else {
-                        console.log("last");
-                        content.push(el);
-                    }
-                } else {
-                    content.push(value);
-                }
             } else {
                 content.push(el);
             }
+        });
+        return content;
+    }
+
+    private static clear_value(arr : (Content | string) []) : (Content | string) [] {
+        let content = [];
+        let tmp_str = "";
+        for(let i = 0; i < arr.length; i++) {
+            let el = arr[i];
+            if(typeof el === "string") {
+                tmp_str += el;
+            } else if(el.type === "span" && el.props.class === this.indicator) {
+                tmp_str += el.props.children[0];
+            } else {
+                content.push(tmp_str);
+                tmp_str = "";
+                content.push(el);
+            }
         }
+        content.push(tmp_str);
         return content;
     }
 
@@ -95,7 +87,9 @@ export default class EditorHandler
                         class: this.indicator
                     }
                 });
-                content.push(" ");
+                if(i < parts.length - 1) {
+                    content.push(" ");
+                }
             } else {
                 if(i < parts.length - 1) {
                     str_ += `${part} `;
@@ -114,7 +108,8 @@ export default class EditorHandler
         contents.forEach((el : Content | string) => {
             if(typeof el !== "string") {
                 if(el.type === "span" && el.props.class === this.indicator) {
-                    const encrypted = MailEncrypt.encrypt(el.props.children[0]);
+                    const str = typeof el.props.children === "string" ? el.props.children : el.props.children[0];
+                    const encrypted = MailEncrypt.encrypt(str);
                     content.push({
                         type: 'a',
                         props: {
