@@ -2,8 +2,9 @@
 Contributors: mc17
 Tags: mail, email, security, protection, encryption, spam, bots, secure, encrypt, protect, easy, fast
 Requires at least: 4.4.1
-Tested up to: 5.4.2
+Tested up to: 5.5
 Stable tag: trunk
+Requires PHP: 7.2
 License: GNUv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -78,17 +79,20 @@ The full sourcecode can be found on github:
 3. Use the `[mail_encrypt]` shortcode or our 'MailEncrypt Block' Gutenberg block to protect your email addresses secure and fast!
 
 == Screenshots ==
-1. You can encrypt your mail address directly in the menu
-2. Or use the menu in the editor to create a shortcode
-3. Example shortcode. Usage shown in description
-4. No mail address is shown in the source code now. The email address is secure from spam bots but still visible for visitors.
+1. With our new 'MailEncrypt Block' all mail addresses are encrypted automatically.
+2. In our new 'MailEncrypt Block' the protected mail addresses are marked.
+3. On the frontend your users see the mail address just as a normal link. For spam bots the address is not visible.
+4. To protect your mail address but use another text for the link, just use our '[mail_encrypt]' shortcode.
+5. Use our generator to encrypt any mail address in our backend.
+6. You can use our shortcode generator in the Classic Editor to build your custom shortcode.
+7. Usable in the Classic Editor with our '[mail_encrypt]' shortcode.
 
 == Changelog ==
 
 = 3.0 =
-* new Design
+* new design
 * renaming
-* Integration in Gutenberg Editor via 'MailEncrypt Block'
+* integration in Gutenberg Editor via 'MailEncrypt Block'
 * backend generator running now on client
 * fixed bugs
 

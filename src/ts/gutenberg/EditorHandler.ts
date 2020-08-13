@@ -1,3 +1,19 @@
+/**
+ * Copyright (c) 2020. mc17
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 import * as EmailValidator from "email-validator";
 import MailEncrypt from "../MailEncrypt";
 
@@ -5,9 +21,7 @@ interface Content {
     type: string,
     props?: {
         class?: string,
-        children?: any[],
-        content?: string,
-        href?: string
+        children?: any[]
     }
 }
 
@@ -42,22 +56,35 @@ export default class EditorHandler
         return contents;
     }
 
-    public static onchange(contents : (Content | string) []) : (Content | string) [] {
+    public static onchange(arr : (Content | string) []) : (Content | string) [] {
+        let cleared_arr = this.clear_value(arr);
         let content = [];
-        contents.forEach((el : Content | string) => {
+        cleared_arr.forEach((el : Content | string) => {
             if(typeof el === "string") {
                 content = content.concat(this.handle_string(el));
-            } else if(el.type === "span" && el.props.class === this.indicator) {
-                const value = el.props.children[0];
-                if(EmailValidator.validate(value)) {
-                    content.push(el);
-                } else {
-                    content.push(value);
-                }
             } else {
                 content.push(el);
             }
         });
+        return content;
+    }
+
+    private static clear_value(arr : (Content | string) []) : (Content | string) [] {
+        let content = [];
+        let tmp_str = "";
+        for(let i = 0; i < arr.length; i++) {
+            let el = arr[i];
+            if(typeof el === "string") {
+                tmp_str += el;
+            } else if(el.type === "span" && el.props.class === this.indicator) {
+                tmp_str += el.props.children[0];
+            } else {
+                content.push(tmp_str);
+                tmp_str = "";
+                content.push(el);
+            }
+        }
+        content.push(tmp_str);
         return content;
     }
 
@@ -76,7 +103,9 @@ export default class EditorHandler
                         class: this.indicator
                     }
                 });
-                content.push(" ");
+                if(i < parts.length - 1) {
+                    content.push(" ");
+                }
             } else {
                 if(i < parts.length - 1) {
                     str_ += `${part} `;
@@ -89,18 +118,26 @@ export default class EditorHandler
         return content;
     }
 
-    public static save(contents : Content[]) : Content[]
+    public static save(arr : Content[]) : Content[]
     {
+        let contents = arr;
+        if(contents[0].type === 'p' && contents[0].props.class === "wp-block-mail-encrypt-block") {
+            contents = contents[0].props.children;
+        }
         let content = [];
         contents.forEach((el : Content | string) => {
             if(typeof el !== "string") {
-                if(el.type === "span" && el.props.class === this.indicator) {
-                    const encrypted = MailEncrypt.encrypt(el.props.children[0]);
+                if(
+                    (el.type === "span" && el.props.class === this.indicator) ||
+                    (el.type === "a" && el.props.class === this.tag)
+                ) {
+                    const str = typeof el.props.children === "string" ? el.props.children : el.props.children[0];
+                    const encrypted = MailEncrypt.encrypt(str);
                     content.push({
                         type: 'a',
                         props: {
                             children: [encrypted],
-                            href: `mailto:${encrypted}`,
+                            href: `${MailEncrypt.encrypt('mailto:')}${encrypted}`,
                             class: this.tag
                         }
                     });
@@ -112,17 +149,13 @@ export default class EditorHandler
             }
         });
 
-        if(content[0].type === 'p' && content[0].props.class === "wp-block-mail-encrypt-block") {
-            return content;
-        } else {
-            return [{
-                type: 'p',
-                props: {
-                    class: "wp-block-mail-encrypt-block",
-                    children: content
-                }
-            }];
-        }
+        return [{
+            type: 'p',
+            props: {
+                class: "wp-block-mail-encrypt-block",
+                children: content
+            }
+        }];
     }
 
 }
