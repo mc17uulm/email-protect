@@ -2,7 +2,7 @@
 Contributors: mc17
 Tags: mail, email, security, protection, encryption, spam, bots, secure, encrypt, protect, easy, fast
 Requires at least: 4.4.1
-Tested up to: 5.4.2
+Tested up to: 5.5
 Stable tag: trunk
 License: GNUv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html

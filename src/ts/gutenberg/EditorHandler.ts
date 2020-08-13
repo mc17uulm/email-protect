@@ -102,12 +102,19 @@ export default class EditorHandler
         return content;
     }
 
-    public static save(contents : Content[]) : Content[]
+    public static save(arr : Content[]) : Content[]
     {
+        let contents = arr;
+        if(contents[0].type === 'p' && contents[0].props.class === "wp-block-mail-encrypt-block") {
+            contents = contents[0].props.children;
+        }
         let content = [];
         contents.forEach((el : Content | string) => {
             if(typeof el !== "string") {
-                if(el.type === "span" && el.props.class === this.indicator) {
+                if(
+                    (el.type === "span" && el.props.class === this.indicator) ||
+                    (el.type === "a" && el.props.class === this.tag)
+                ) {
                     const str = typeof el.props.children === "string" ? el.props.children : el.props.children[0];
                     const encrypted = MailEncrypt.encrypt(str);
                     content.push({
@@ -126,17 +133,13 @@ export default class EditorHandler
             }
         });
 
-        if(content[0].type === 'p' && content[0].props.class === "wp-block-mail-encrypt-block") {
-            return content;
-        } else {
-            return [{
-                type: 'p',
-                props: {
-                    class: "wp-block-mail-encrypt-block",
-                    children: content
-                }
-            }];
-        }
+        return [{
+            type: 'p',
+            props: {
+                class: "wp-block-mail-encrypt-block",
+                children: content
+            }
+        }];
     }
 
 }
