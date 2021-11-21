@@ -1,19 +1,20 @@
 {
-  "name": "wp-mail-encrypt",
-  "version": "3.0.0",
+  "name": "mail-protect",
+  "version": "4.0.0",
   "description": "Secures your mail addresses from spam bots. Use the [mail-crypt] shortcode to add encrypted mail addresses to your page",
   "main": "index.js",
   "scripts": {
     "tsc": "tsc",
     "start": "webpack --mode development --watch",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "php:analyse": "./vendor/bin/phpstan analyse --memory-limit=-1 -c phpstan.neon"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mc17uulm/wp-mail-crypter.git"
   },
-  "author": "mc17uulm",
-  "license": "ISC",
+  "author": "CodeLeaf",
+  "license": "GPL-2.0-or-later",
   "bugs": {
     "url": "https://github.com/mc17uulm/wp-mail-crypter/issues"
   },
@@ -22,32 +23,18 @@
     "@babel/core": "^7.4.5",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
-    "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
-    "@types/email-validator": "^1.0.6",
-    "@types/wordpress__block-editor": "^2.2.8",
     "@wordpress/env": "^1.6.0",
     "@wordpress/scripts": "^12.1.1",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
-    "css-loader": "^4.2.0",
     "loader-utils": "^2.0.0",
-    "nodemon": "^2.0.4",
-    "sass-loader": "^9.0.3",
-    "source-map-loader": "^0.2.4",
-    "style-loader": "^1.2.1",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.1",
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.4.4",
-    "@types/react": "^16.9.44",
-    "@types/react-dom": "^16.9.8",
-    "email-validator": "^2.0.4",
-    "file-loader": "^6.0.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "@babel/polyfill": "^7.4.4"
   }
 }

@@ -1,7 +1,7 @@
-# WP Mail Encrypt
-<small>Version 3.0</small>
+# MailProtect
+<small>Version 4.0</small>
 
-<small>til version 3.0 known as 'Mail Crypter'</small>
+<small>til version 4.0 known as 'WP Mail Encrypt', til version 3.0 known as 'Mail Crypter'</small>
 
 ### Wordpress anti-spam mail plugin :lock::e-mail:
 

@@ -1,0 +1,9 @@
+name: Publish build plugin to wordpress.org
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest

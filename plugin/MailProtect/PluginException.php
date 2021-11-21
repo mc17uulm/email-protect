@@ -1,5 +1,7 @@
+<?php
+
 /**
- * Copyright (c) 2020. mc17
+ * Copyright (c) 2021 CodeLeaf
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -14,29 +16,37 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-export default class MailEncrypt
+namespace MailProtect;
+
+use Exception;
+
+/**
+ * Class PluginException
+ * @package MailProtect
+ */
+class PluginException extends Exception
 {
 
-    public static encrypt(str : string) : string
+    /**
+     * @var string
+     */
+    private string $debug_msg;
+
+    /**
+     * @param string $debug_msg
+     * @param string $message
+     */
+    public function __construct(string $debug_msg, string $message = "")
     {
-        return str
-            .split("")
-            .map((char : string) => {
-                return char.charCodeAt(0);
-            })
-            .reduce((carry : string, item : number) => {
-                return `${carry}&#${item};`;
-            }, "");
+        parent::__construct($message);
+        $this->debug_msg = $debug_msg;
     }
 
-    public static decrypt(str : string) : string
-    {
-        return str
-            .split("")
-            .map((char : string) => {
-                return String.fromCharCode(char.charCodeAt(0) - 2);
-            })
-            .join("");
+    /**
+     * @return string
+     */
+    public function get_debug_msg() : string {
+        return $this->debug_msg;
     }
 
 }
