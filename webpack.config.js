@@ -53,7 +53,7 @@ module.exports = (env, argv) => {
             new BrowserSyncPlugin({
                 host: 'localhost',
                 port: 3000,
-                proxy: 'mailprotect.dev'
+                proxy: 'mail-protect.stacks.run'
             })
         ],
         output: {

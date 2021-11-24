@@ -1,0 +1,26 @@
+#!/bin/bash
+
+cwd=$(pwd)
+build=$cwd/build
+
+rm -rf $build
+mkdir $build
+mkdir $build/dist
+mkdir $build/plugin
+mkdir $build/plugin/MailProtect
+
+yarn build
+
+cp -r "$cwd/dist/"* "$build/dist/"
+cp "$cwd/composer.json" "$build/"
+cp "$cwd/composer.lock" "$build/"
+cp "$cwd/LICENSE" "$build/"
+cp "$cwd/mail-protect.php" "$build/"
+cp "$cwd/readme.txt" "$build/"
+cp -r "$cwd/plugin/MailProtect/"* "$build/plugin/MailProtect"
+
+cd "$build"
+
+composer install --no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --optimize-autoloader --prefer-dist
+
+zip -qqr "$cwd/mail-protect.zip" .

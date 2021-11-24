@@ -59,18 +59,26 @@ final class CodeFactory
      * @param bool $js
      * @return string
      */
-    public function mail_to_code(string $mail, string $text, bool $js) : string
+    public function mail_to_code(string $mail, string $text, bool $js = false) : string
     {
-        if($js) {
-            $enc_mail = $this->encrypt_by_caesar($mail);
-            return $text === '' ?
-                "<a href='#' name='mail-encrypt-tag' value='$enc_mail'>$enc_mail</a>" :
-                "<a href='#' name='mail-encrypt-tag' value='$enc_mail'>" . $this->encrypt_by_caesar($text) . "</a>";
-        } else {
-            return $text === '' ?
-                "<a href='" . $this->encrypt_to_ascii("mailto:$mail") . "'>" . $this->encrypt_to_ascii($mail) . "</a>" :
-                "<a href='" . $this->encrypt_to_ascii("mailto:$mail") . "'>" . $this->encrypt_to_ascii($text) . "</a>";
+        if(count(func_get_args()) > 2) {
+            trigger_error(
+                '"js" is deprecated and will be removed in a future release', E_USER_NOTICE
+            );
         }
+        $enc_mail = $this->encrypt_by_caesar($mail);
+        return $text === '' ?
+            "<p><a href='#' data-mail-protect-click='$enc_mail'><span data-mail-protect='{$enc_mail}'></span></a></p>" :
+            "<p><a href='#' data-mail-protect-click='$enc_mail'><span data-mail-protect='{$this->encrypt_by_caesar($text)}'></span></a></p>";
+    }
+
+    /**
+     * @param string $haystack
+     * @param string $needle
+     * @return bool
+     */
+    public function str_contains(string $haystack, string $needle) : bool {
+        return $needle !== '' && strpos($haystack, $needle) !== false;
     }
 
 }
