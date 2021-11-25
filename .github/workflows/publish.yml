@@ -2,8 +2,78 @@ name: Publish build plugin to wordpress.org
 
 on:
   push:
-    branches: [ main ]
+    tags:
+      - "v*"
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+  - name: Validate composer.json and composer.lock
+      run: composer validate
+
+      - name: Cache composer package
+        id: composer-cache
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: Install composer dependencies
+        if: steps.composer-cache.outputs.cache-hit != 'true'
+        run: composer install --no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --optimize-autoloader --prefer-dist
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install yarn dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn install --frozen-lockfile
+
+      - name: Build scripts
+        run: yarn build
+
+      - name: Bundle to zip file
+        run: |
+          zip -qqr \
+            --exclude="*.github*" \
+            --exclude="*.git*" \
+            --exclude="*.wordpress-org*" \
+            --exclude="*node_modules*" \
+            --exclude="*src*" \
+            --exclude="*tests*" \
+            --exclude="*.babelrc*" \
+            --exclude="*.gitignore*" \
+            --exclude="*bundle*" \
+            --exclude="*package.json*" \
+            --exclude="*phpstan.neon*" \
+            --exclude="*tsconfig.json*" \
+            --exclude="*webpack.config.js*" \
+            --exclude="*yarn.lock*" \
+            mail-protect.zip \
+            .
+
+      - name: Release new version
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "mail-protect.zip"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.event.head_commit.message }}
+
+      - name: Publish to wordpress.org
+        uses: nk-o/action-wordpress-plugin-deploy@master
+        env:
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SLUG: mail-protect
+          VERSION: ${{ github.event.head_commit.message }}
