@@ -43,7 +43,7 @@ jobs:
         run: yarn build
 
       - name: Transpile to php7.0
-        uses: zingimmik/rector-action@0.0.2
+        uses: zingimmick/rector-action@0.0.2
         with:
           args: --dry-run
 
