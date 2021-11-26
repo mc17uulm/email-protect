@@ -19,6 +19,7 @@ jobs:
           vendor/bin/rector process plugin/MailProtect
           sed -i "s/Requires PHP: 8.0/Requires PHP: 7.0/" mail-protect.php
           sed -i "s/\"php\": \">=8.0\"/\"php\": \">=7.0\"/" composer.json
+          composer update
 
       - name: Cache composer package
         id: composer-cache
