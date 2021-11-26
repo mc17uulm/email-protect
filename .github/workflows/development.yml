@@ -16,7 +16,7 @@ jobs:
       - name: Transpile to php7.0
         run: |
           composer install
-          vendor/bin/rector process plugin/MailProtect --dry-run
+          vendor/bin/rector process plugin/MailProtect
 
       - name: Cache composer package
         id: composer-cache
