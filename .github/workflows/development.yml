@@ -13,6 +13,11 @@ jobs:
       - name: Validate composer.json and composer.lock
         run: composer validate
 
+      - name: Transpile to php7.0
+        run: |
+          composer install
+          vendor/bin/rector process plugin/MailProject --dry-run
+
       - name: Cache composer package
         id: composer-cache
         uses: actions/cache@v2
@@ -41,11 +46,6 @@ jobs:
 
       - name: Build scripts
         run: yarn build
-
-      - name: Transpile to php7.0
-        uses: zingimmick/rector-action@0.0.2
-        with:
-          args: --dry-run
 
       - name: Sync to development server
         env:
