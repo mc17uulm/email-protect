@@ -17,6 +17,8 @@ jobs:
         run: |
           composer install
           vendor/bin/rector process plugin/MailProtect
+          sed -i '/sRequires PHP: 8.0/Requires PHP: 7.0/' mail-protect.php
+          sed -i '/s"php": ">=8.0"/"php": ">=7.0"/' composer.json
 
       - name: Cache composer package
         id: composer-cache
@@ -47,6 +49,27 @@ jobs:
       - name: Build scripts
         run: yarn build
 
+      - name: Bundle to zip file
+        run: |
+            zip -qqr \
+              --exclude="*.github*" \
+              --exclude="*.git*" \
+              --exclude="*.wordpress-org*" \
+              --exclude="*node_modules*" \
+              --exclude="*src*" \
+              --exclude="*tests*" \
+              --exclude="*.babelrc*" \
+              --exclude="*.gitignore*" \
+              --exclude="*bundle*" \
+              --exclude="*package.json*" \
+              --exclude="*phpstan.neon*" \
+              --exclude="*rector.php*" \
+              --exclude="*tsconfig.json*" \
+              --exclude="*webpack.config.js*" \
+              --exclude="*yarn.lock*" \
+              mail-protect.zip \
+              .
+
       - name: Sync to development server
         env:
           dest: '${{ secrets.USER }}@${{ secrets.HOST }}:/var/www/vhosts/code-leaf.de/development.code-leaf.de/wp-content/plugins/mail-protect'
@@ -58,7 +81,7 @@ jobs:
             --exclude /deploy_key \
             --exclude /.git/ \
             --exclude /.github/ \
-            --exclude /.wordpress/ \
+            --exclude /.wordpress-org/ \
             --exclude /node_modules/ \
             --exclude /src/ \
             --exclude /tests/ \
@@ -67,6 +90,7 @@ jobs:
             --exclude /build_plugin \
             --exclude /package.json \
             --exclude /phpstan.neon \
+            --exclude /rector.php \
             --exclude /tsconfig.json \
             --exclude /webpack.config.js \
             ./ ${{ env.dest }}
