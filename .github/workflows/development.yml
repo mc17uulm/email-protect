@@ -42,6 +42,11 @@ jobs:
       - name: Build scripts
         run: yarn build
 
+      - name: Transpile to php7.0
+        uses: zingimmik/rector-action@0.0.2
+        with:
+          args: --dry-run
+
       - name: Sync to development server
         env:
           dest: '${{ secrets.USER }}@${{ secrets.HOST }}:/var/www/vhosts/code-leaf.de/development.code-leaf.de/wp-content/plugins/mail-protect'

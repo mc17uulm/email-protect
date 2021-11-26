@@ -13,12 +13,10 @@
  * Author: CodeLeaf
  * Author URI: https://github.com/mc17uulm/wp-mail-crypter
  * Version: 4.0.0
- * Text Domain: mail-protect
- * Domain Path: language
  * License: GPLv3
  * Licence URI: http://www.gnu.org/licenses/gpl-3.0.txt
  * Tags: mail, security, encryption, spam, email, secure, encrypt, protect
- * Requires PHP: 7.4
+ * Requires PHP: 7.0
  *
  * === Plugin Information ===
  *
@@ -39,9 +37,9 @@
 declare(strict_types=1);
 
 if (!defined('ABSPATH')) die("Invalid request");
-if(!defined('PHP_VERSION_ID') || PHP_VERSION_ID < 70400) {
-    error_log('MailProtect => plugin requires php version >= 7.4. Given (' . PHP_VERSION . ')');
-    die('MailProtect => plugin requires php version >= 7.4.');
+if(!defined('PHP_VERSION_ID') || PHP_VERSION_ID < 70000) {
+    error_log('MailProtect => plugin requires php version >= 7.0. Given (' . PHP_VERSION . ')');
+    die('MailProtect => plugin requires php version >= 7.0.');
 }
 if (!defined('PHP_VERSION_ID')) {
     define('PHP_VERSION_ID', 0);
@@ -49,7 +47,6 @@ if (!defined('PHP_VERSION_ID')) {
 
 define('MAIL_PROTECT_VERSION', '4.0.0');
 define('MAIL_PROTECT_SLUG', 'mail-protect');
-define('MAIL_PROTECT_TEXTDOMAIN', 'mail-protect');
 define('MAIL_PROTECT_FILE', __FILE__);
 define('MAIL_PROTECT_URL', plugin_dir_url(__FILE__));
 define('MAIL_PROTECT_PATH', plugin_dir_path(__FILE__));

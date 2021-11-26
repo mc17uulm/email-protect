@@ -2,8 +2,7 @@ name: Publish build plugin to wordpress.org
 
 on:
   push:
-    tags:
-      - "v*"
+    branches: [ master ]
 
 jobs:
   deploy:

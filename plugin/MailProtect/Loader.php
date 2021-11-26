@@ -55,8 +55,6 @@ final class Loader
 
     public function run() : void {
 
-        load_plugin_textdomain('mail-protect', false, basename(dirname($this->file)) . '/language/');
-
         add_shortcode('mail_crypt', [$this, 'handle_shortcode']);
         add_shortcode('mail_encrypt', [$this, 'handle_shortcode']);
         add_shortcode('mail_protect', [$this, 'handle_shortcode']);
