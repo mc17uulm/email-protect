@@ -22,14 +22,14 @@ jobs:
           composer update
           rm -rf vendor/
 
-      - name: Cache composer package
-        id: composer-cache
-        uses: actions/cache@v2
-        with:
-          path: vendor
-          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-php-
+      #- name: Cache composer package
+        #id: composer-cache
+        #uses: actions/cache@v2
+        #with:
+        #  path: vendor
+        #  key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        #  restore-keys: |
+        #    ${{ runner.os }}-php-
 
       - name: Cache node modules
         uses: actions/cache@v2
@@ -41,7 +41,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install composer dependencies
-        if: steps.composer-cache.outputs.cache-hit != 'true'
+        #if: steps.composer-cache.outputs.cache-hit != 'true'
         run: composer install --no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --optimize-autoloader --prefer-dist
 
       - name: Install yarn dependencies
@@ -64,6 +64,7 @@ jobs:
               --exclude="*.babelrc*" \
               --exclude="*.gitignore*" \
               --exclude="*.distignore*" \
+              --exclude="*BUGS.md*" \
               --exclude="*bundle*" \
               --exclude="*package.json*" \
               --exclude="*phpstan.neon*" \
@@ -93,6 +94,7 @@ jobs:
             --exclude /.babelrc \
             --exclude /.gitignore \
             --exclude /.distignore \
+            --exclude /BUGS.md \
             --exclude /build_plugin \
             --exclude /package.json \
             --exclude /phpstan.neon \
