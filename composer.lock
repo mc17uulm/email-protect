@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2852345df31bf5baffccda9dabe76581",
+    "content-hash": "03f055035e214dfa31ab1a5806e1c5aa",
     "packages": [],
     "packages-dev": [
         {
@@ -303,16 +303,16 @@
         },
         {
             "name": "php-stubs/wordpress-stubs",
-            "version": "v5.8.1",
+            "version": "v5.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-stubs/wordpress-stubs.git",
-                "reference": "8b333464d3183bccde2fdbb814e3cae592434943"
+                "reference": "67fd773742b7be5b4463f40318b0b4890a07033b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-stubs/wordpress-stubs/zipball/8b333464d3183bccde2fdbb814e3cae592434943",
-                "reference": "8b333464d3183bccde2fdbb814e3cae592434943",
+                "url": "https://api.github.com/repos/php-stubs/wordpress-stubs/zipball/67fd773742b7be5b4463f40318b0b4890a07033b",
+                "reference": "67fd773742b7be5b4463f40318b0b4890a07033b",
                 "shasum": ""
             },
             "replace": {
@@ -341,9 +341,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-stubs/wordpress-stubs/issues",
-                "source": "https://github.com/php-stubs/wordpress-stubs/tree/v5.8.1"
+                "source": "https://github.com/php-stubs/wordpress-stubs/tree/v5.8.2"
             },
-            "time": "2021-09-09T22:10:19+00:00"
+            "time": "2021-11-11T13:57:00+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -2419,7 +2419,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.0"
+        "php": "^8.1"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"
