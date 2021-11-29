@@ -69,16 +69,7 @@ final class CodeFactory
         $enc_mail = $this->encrypt_by_caesar($mail);
         return $text === '' ?
             "<p><a href='#' data-mail-protect-click='$enc_mail'><span data-mail-protect='{$enc_mail}'></span></a></p>" :
-            "<p><a href='#' data-mail-protect-click='$enc_mail'><span data-mail-protect='{$this->encrypt_by_caesar($text)}'></span></a></p>";
-    }
-
-    /**
-     * @param string $haystack
-     * @param string $needle
-     * @return bool
-     */
-    public function str_contains(string $haystack, string $needle) : bool {
-        return $needle !== '' && strpos($haystack, $needle) !== false;
+            "<p><a href='#' data-mail-protect-click='$enc_mail'>$text</a></p>";
     }
 
 }

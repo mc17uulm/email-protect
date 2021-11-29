@@ -1,4 +1,5 @@
 <?php
+
 /**
  * MailProtect
  *
@@ -16,7 +17,7 @@
  * License: GPLv3
  * Licence URI: http://www.gnu.org/licenses/gpl-3.0.txt
  * Tags: mail, security, encryption, spam, email, secure, encrypt, protect
- * Requires PHP: 8.0
+ * Requires PHP: 8.1
  *
  * === Plugin Information ===
  *
@@ -30,7 +31,7 @@
  * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
  * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * If there are problems, bugs or errors, please report on github: https://github.com/mc17uulm/wp-mail-encrypt
+ * If there are problems, bugs or errors, please report on GitHub: https://github.com/mc17uulm/mail-protect
  *
  */
 

@@ -1,5 +1,6 @@
 .git
 .github
+img
 node_modules
 src
 tests

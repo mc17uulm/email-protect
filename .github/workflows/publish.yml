@@ -49,6 +49,7 @@ jobs:
             --exclude="*.git*" \
             --exclude="*.wordpress-org*" \
             --exclude="*node_modules*" \
+            --exclude="*img*" \
             --exclude="*src*" \
             --exclude="*tests*" \
             --exclude="*.babelrc*" \

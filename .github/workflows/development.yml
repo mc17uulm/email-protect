@@ -16,10 +16,11 @@ jobs:
       - name: Transpile to php7.0
         run: |
           composer install
-          vendor/bin/rector process plugin/MailProtect
-          sed -i "s/Requires PHP: 8.0/Requires PHP: 7.0/" mail-protect.php
-          sed -i "s/\"php\": \">=8.0\"/\"php\": \">=7.0\"/" composer.json
+          vendor/bin/rector process
+          sed -i "s/Requires PHP: 8.1/Requires PHP: 7.0/" mail-protect.php
+          sed -i "s/\"php\": \">=8.1\"/\"php\": \">=7.0\"/" composer.json
           composer update
+          rm -rf vendor/
 
       - name: Cache composer package
         id: composer-cache
@@ -56,11 +57,13 @@ jobs:
               --exclude="*.github*" \
               --exclude="*.git*" \
               --exclude="*.wordpress-org*" \
+              --exclude="*img*" \
               --exclude="*node_modules*" \
               --exclude="*src*" \
               --exclude="*tests*" \
               --exclude="*.babelrc*" \
               --exclude="*.gitignore*" \
+              --exclude="*.distignore*" \
               --exclude="*bundle*" \
               --exclude="*package.json*" \
               --exclude="*phpstan.neon*" \
@@ -84,10 +87,12 @@ jobs:
             --exclude /.github/ \
             --exclude /.wordpress-org/ \
             --exclude /node_modules/ \
+            --exclude /img/ \
             --exclude /src/ \
             --exclude /tests/ \
             --exclude /.babelrc \
             --exclude /.gitignore \
+            --exclude /.distignore \
             --exclude /build_plugin \
             --exclude /package.json \
             --exclude /phpstan.neon \

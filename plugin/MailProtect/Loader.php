@@ -32,7 +32,7 @@ final class Loader
     /**
      * @var string | false
      */
-    private $version;
+    private string|false $version;
     /**
      * @var array
      */
@@ -99,7 +99,7 @@ final class Loader
             return sprintf('#%2$s data-mail-protect-click="%1$s"', $factory->encrypt_by_caesar($input[1]), $input[2]);
         }, $content);
         return preg_replace_callback('/[^\s\<\>]*\@[^\s\<\>]*/i', function(array $input) use($factory) {
-            if($factory->str_contains($input[0], "\"")) return $input[0];
+            if(str_contains($input[0], "\"")) return $input[0];
             return sprintf('<span data-mail-protect="%1$s"></span>', $factory->encrypt_by_caesar($input[0]));
         }, $links ?? $content);
    }
