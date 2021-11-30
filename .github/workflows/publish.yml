@@ -78,9 +78,11 @@ jobs:
 
       - name: Release new version
         uses: ncipollo/release-action@v1
+        env:
+          version: ${{ github.event.head_commit.message }}
         with:
           artifacts: "email-protect.zip"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ env.version }}
           tag: ${{ github.event.head_commit.message }}
 
       #- name: Publish to wordpress.org
