@@ -82,8 +82,8 @@ jobs:
           version: ${{ github.event.head_commit.message }}
         with:
           artifacts: "email-protect.zip"
-          token: ${{ env.version }}
-          tag: ${{ github.event.head_commit.message }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ env.version }}
 
       #- name: Publish to wordpress.org
       #  uses: nk-o/action-wordpress-plugin-deploy@master
