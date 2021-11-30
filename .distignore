@@ -1,5 +1,6 @@
 /.git
 /.github
+/.wordpress-org
 /img
 /node_modules
 /src
@@ -10,6 +11,7 @@
 BUGS.md
 bundle
 docker-compose.yml
+email-protect.zip
 package.json
 phpstan.neon
 rector.php
