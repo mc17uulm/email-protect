@@ -1,5 +1,5 @@
-=== Email Protect ===
-Contributors: mc17
+=== EmailProtect ===
+Contributors: CodeLeaf
 Tags: mail, email, security, protection, encryption, spam, bots, secure, encrypt, protect, easy, fast
 Requires at least: 4.4.1
 Tested up to: 5.8.2
@@ -12,11 +12,11 @@ Simple, fast and no-config plugin to protect your email address. No need for sho
 
 == Description ==
 # EmailProtect
-<small>Version 4.0.0</small>
+<small>Version 4.0.1</small>
 
-> :warning: **Breaking changes: ** Version 4.0.0 does no longer support the MailEncrypt Gutenberg Block. Your email addresses are still protected
+**WARNING!** *Breaking changes:* Version 4.0.x does no longer support the MailEncrypt Gutenberg Block. Your email addresses are still protected
 
-## WordPress anti-spam email plugin :lock::e-mail:
+## WordPress anti-spam email plugin
 
 Simple, fast and no-config plugin to protect your email address. No need for shortcodes or blocks. EmailProtect encrypts all your email addresses in your blog.
 
@@ -41,16 +41,20 @@ Here is my email address [contact@code-leaf.de](mailto:contact@code-leaf.de).
 
 *This is what a spam-bot sees:*
 
-```html
+`
 Here is my email address
 <a href ="#" data-email-protect-click="eqpvcevBeqfg/ngch0fg">
     <span data-email-protect="eqpvcevBeqfg/ngch0fg"></span>
 </a>
-```
+`
 
 ---
 
 ## Versions
+
+- 4.0.1
+  - better email recognition
+  - fixed bugs
 
 - 4.0.0
   - breaking changes for users of version 3.0 or older
@@ -113,7 +117,7 @@ Here is my email address
 - 0.1
   - initial Version
 
-Til version 4.0 known as 'WP Mail Encrypt', til version 3.0 known as 'Mail Crypter'
+Til version 4.0.0 known as 'WP Mail Encrypt', til version 3.0 known as 'Mail Crypter'
 
 ## Source
 
@@ -132,6 +136,10 @@ The full sourcecode can be found on github:
 
 
 == Changelog ==
+
+= 4.0.1 =
+* better email recognition
+* fixed bugs
 
 = 4.0.0 =
 * breaking changes for users of version 3.0 or older

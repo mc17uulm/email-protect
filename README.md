@@ -1,7 +1,7 @@
 # EmailProtect
-<small>Version 4.0.0</small>
+<small>Version 4.0.1</small>
 
-> :warning: **Breaking changes: ** Version 4.0.0 does no longer support the MailEncrypt Gutenberg Block. Your email addresses are still protected
+> :warning: **Breaking changes: ** Version 4.0.x does no longer support the MailEncrypt Gutenberg Block. Your email addresses are still protected
 
 ## Wordpress anti-spam email plugin :lock::e-mail:
 
@@ -38,6 +38,10 @@ Here is my email address
 ---
 
 ## Versions
+
+- 4.0.1
+  - better email recognition
+  - fixed bugs
 
 - 4.0.0
   - breaking changes for users of version 3.0 or older
@@ -100,12 +104,12 @@ Here is my email address
 - 0.1 
   - initial Version
 
-Til version 4.0 known as 'WP Mail Encrypt', til version 3.0 known as 'Mail Crypter'
+Til version 4.0.0 known as 'WP Mail Encrypt', til version 3.0 known as 'Mail Crypter'
 
 ## Source
 
 **wordpress.org:**
-[https://de.wordpress.org/plugins/email-protect/](https://de.wordpress.org/plugins/email-protect/)
+[https://de.wordpress.org/plugins/email-protect/](https://de.wordpress.org/plugins/mail-crypt/)
 
 The full sourcecode can be found on github:
 
