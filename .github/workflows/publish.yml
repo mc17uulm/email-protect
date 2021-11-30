@@ -76,14 +76,15 @@ jobs:
             email-protect.zip \
             .
 
+      - name: Set env
+        run: echo "EMAIL_PROTECT_VERSION=$(echo "${{ github.event.head_commit.message }}" | sed 's/\s.*//')" >> $GITHUB_ENV
+
       - name: Release new version
         uses: ncipollo/release-action@v1
-        env:
-          version: $(echo $(echo "${{ github.event.head_commit.message }}" | sed 's/\s.*//'))
         with:
           artifacts: "email-protect.zip"
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ env.version }}
+          tag: ${{ env.EMAIL_PROTECT_VERSION }}
 
       - name: Publish to wordpress.org
         uses: nk-o/action-wordpress-plugin-deploy@master
@@ -91,4 +92,4 @@ jobs:
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SLUG: mail-crypter
-          VERSION: $(echo $(echo "${{ github.event.head_commit.message }}" | sed 's/\s.*//'))
+          VERSION: ${{ env.EMAIL_PROTECT_VERSION }}
