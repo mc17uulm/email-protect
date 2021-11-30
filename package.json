@@ -1,6 +1,6 @@
 {
   "name": "email-protect",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Simple, fast and no-config plugin to protect your email address. No need for shortcodes or blocks. EmailProtect encrypts all your email addresses in your blog",
   "main": "index.js",
   "scripts": {
