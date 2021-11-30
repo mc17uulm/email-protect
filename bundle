@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 cwd=$(pwd)
 build=$cwd/build
@@ -30,6 +30,9 @@ composer install
 sed -i "s/Requires PHP: 8.0/Requires PHP: 7.0/" email-protect.php
 sed -i "s/\"php\": \">=8.0\"/\"php\": \">=7.0\"/" composer.json
 composer update
+
+sleep 1
+
 rm -rf vendor/
 rm -f rector.php
 

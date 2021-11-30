@@ -1,7 +1,7 @@
 # EmailProtect
 <small>Version 4.0.0</small>
 
-> :warning: **Breaking changes: ** Upgrade to version 4.0.0 can cause breaking changes. The Gutenberg Block is not longer available!
+> :warning: **Breaking changes: ** Version 4.0.0 does no longer support the MailEncrypt Gutenberg Block. Your email addresses are still protected
 
 ## Wordpress anti-spam email plugin :lock::e-mail:
 
@@ -41,8 +41,8 @@ Here is my email address
 
 - 4.0.0
   - breaking changes for users of version 3.0 or older
-  - Gutenberg integration deprecated
-  - ClassicEditor integration deprecated
+  - Gutenberg-Block deprecated
+  - ClassicEditor menu integration deprecated
   - backend menu removed
   - refactored complete code base
   - shortcode deprecation in version 5

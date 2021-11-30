@@ -31,13 +31,14 @@ final class CodeFactory
      */
     public function encrypt_to_ascii(string $str) : string {
         return array_reduce(
-            array_map(function(string $piece) {
+            array_map(function(string $piece) : int {
                 return ord($piece);
             }, str_split($str)),
-            function(?string $carry, int $item) {
+            function(string $carry, int $item) : string {
                 $carry .= "&#$item;";
                 return $carry;
-            }
+            },
+            ""
         );
     }
 
