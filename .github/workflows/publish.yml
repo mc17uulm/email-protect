@@ -79,7 +79,7 @@ jobs:
       - name: Release new version
         uses: ncipollo/release-action@v1
         env:
-          version: echo $(echo "${{ github.event.head_commit.message }}" | sed 's/\s.*//')
+          version: $(echo $(echo "${{ github.event.head_commit.message }}" | sed 's/\s.*//'))
         with:
           artifacts: "email-protect.zip"
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -91,4 +91,4 @@ jobs:
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SLUG: mail-crypter
-          VERSION: ${{ github.event.head_commit.message }}
+          VERSION: $(echo $(echo "${{ github.event.head_commit.message }}" | sed 's/\s.*//'))
