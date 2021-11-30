@@ -1,12 +1,11 @@
 {
     "compilerOptions": {
-        "jsx": "react",
-        "lib": ["es2017.object", "es6", "dom"],
-        "outDir": "./dist/js/",
-        "sourceMap": true,
+        "lib": ["dom", "es2015", "es2017.object"],
+        "target": "es6",
         "module": "commonjs",
-        "target": "es5",
+        "sourceMap": true,
+        "strict": true,
         "esModuleInterop": true,
-        "noImplicitAny": false
+        "downlevelIteration": true
     }
 }

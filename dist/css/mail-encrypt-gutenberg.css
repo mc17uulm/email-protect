@@ -1,9 +1,0 @@
-.mail-encrypt-indicator {
-  color: green;
-}
-
-.mail-encrypt-indicator::before {
-  content: url("./../img/shield_icon.png") " ";
-  display: contents;
-  float: left;
-}

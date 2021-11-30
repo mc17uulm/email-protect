@@ -1,19 +1,24 @@
 {
-    "name": "mc17uulm/wp-mail-encrypt",
-    "description": "Secures your mail addresses from spam bots. Use the [mail-crypt] shortcode to add encrypted mailaddresses to your page",
+    "name": "codeleaf/email-protect",
+    "description": "Secures your email addresses from spam bots. Use the [mail-crypt] shortcode to add encrypted mailaddresses to your page",
     "authors": [
         {
-            "name": "mc17uulm",
-            "email": "marco.combosch@uni-ulm.de"
+            "name": "CodeLeaf",
+            "email": "development@code-leaf.de"
         }
     ],
     "require": {
-        "php": "^7.1"
+        "php": ">=8.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.2"
+        "phpstan/phpstan": "^1.2.0",
+        "szepeviktor/phpstan-wordpress": "^1.0.2",
+        "phpunit/phpunit": "^9.2",
+        "rector/rector": "^0.12.5"
     },
-    "scripts": {
-        "test": "phpunit tests"
+    "autoload": {
+        "psr-4": {
+            "EmailProtect\\": "./plugin/EmailProtect"
+        }
     }
 }

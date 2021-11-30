@@ -1,53 +1,39 @@
 {
-  "name": "wp-mail-encrypt",
-  "version": "3.0.0",
-  "description": "Secures your mail addresses from spam bots. Use the [mail-crypt] shortcode to add encrypted mail addresses to your page",
+  "name": "email-protect",
+  "version": "4.0.0",
+  "description": "Simple, fast and no-config plugin to protect your email address. No need for shortcodes or blocks. EmailProtect encrypts all your email addresses in your blog",
   "main": "index.js",
   "scripts": {
     "tsc": "tsc",
     "start": "webpack --mode development --watch",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "php:analyse": "./vendor/bin/phpstan analyse --memory-limit=-1 -c phpstan.neon"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mc17uulm/wp-mail-crypter.git"
   },
-  "author": "mc17uulm",
-  "license": "ISC",
+  "author": "CodeLeaf",
+  "license": "GPL-2.0-or-later",
   "bugs": {
     "url": "https://github.com/mc17uulm/wp-mail-crypter/issues"
   },
   "homepage": "https://github.com/mc17uulm/wp-mail-crypter#readme",
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/preset-env": "^7.4.5",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/preset-typescript": "^7.3.3",
-    "@types/email-validator": "^1.0.6",
-    "@types/wordpress__block-editor": "^2.2.8",
-    "@wordpress/env": "^1.6.0",
-    "@wordpress/scripts": "^12.1.1",
-    "awesome-typescript-loader": "^5.2.1",
-    "babel-loader": "^8.0.6",
-    "css-loader": "^4.2.0",
-    "loader-utils": "^2.0.0",
-    "nodemon": "^2.0.4",
-    "sass-loader": "^9.0.3",
-    "source-map-loader": "^0.2.4",
-    "style-loader": "^1.2.1",
-    "ts-loader": "^6.0.4",
-    "typescript": "^3.5.1",
-    "webpack": "^4.32.2",
-    "webpack-cli": "^3.3.2"
+    "@babel/core": "^7.16.0",
+    "@babel/plugin-proposal-class-properties": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-typescript": "^7.16.0",
+    "@wordpress/dependency-extraction-webpack-plugin": "^3.2.1",
+    "@wordpress/scripts": "^19.2.2",
+    "browser-sync": "^2.27.7",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "esbuild-loader": "^2.16.0",
+    "typescript": "^4.5.2",
+    "webpack": "^5.64.2",
+    "webpack-cli": "^4.9.1"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.4.4",
-    "@types/react": "^16.9.44",
-    "@types/react-dom": "^16.9.8",
-    "email-validator": "^2.0.4",
-    "file-loader": "^6.0.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "@babel/polyfill": "^7.4.4"
   }
 }

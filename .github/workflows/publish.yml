@@ -1,0 +1,92 @@
+name: Publish build plugin to wordpress.org
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
+      - name: Transpile to php7.0
+        run: |
+          composer install
+          vendor/bin/rector process
+          sed -i "s/Requires PHP: 8.0/Requires PHP: 7.0/" email-protect.php
+          sed -i "s/\"php\": \">=8.0\"/\"php\": \">=7.0\"/" composer.json
+          composer update
+          rm -rf vendor/
+
+      - name: Cache composer package
+        id: composer-cache
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install composer dependencies
+        if: steps.composer-cache.outputs.cache-hit != 'true'
+        run: composer install --no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --optimize-autoloader --prefer-dist
+
+      - name: Install yarn dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn install --frozen-lockfile
+
+      - name: Build scripts
+        run: yarn build
+
+      - name: Bundle to zip file
+        run: |
+          zip -qqr \
+            --exclude="*.github*" \
+            --exclude="*.git*" \
+            --exclude="*.wordpress-org*" \
+            --exclude="*img*" \
+            --exclude="*node_modules*" \
+            --exclude="*src*" \
+            --exclude="*tests*" \
+            --exclude="*.babelrc*" \
+            --exclude="*.gitignore*" \
+            --exclude="*.distignore*" \
+            --exclude="*BUGS.md*" \
+            --exclude="*docker-compose.yml" \
+            --exclude="*bundle*" \
+            --exclude="*package.json*" \
+            --exclude="*phpstan.neon*" \
+            --exclude="*rector.php*" \
+            --exclude="*tsconfig.json*" \
+            --exclude="*webpack.config.js*" \
+            --exclude="*yarn.lock*" \
+            email-protect.zip \
+            .
+
+      - name: Release new version
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "email-protect.zip"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.event.head_commit.message }}
+
+      #- name: Publish to wordpress.org
+      #  uses: nk-o/action-wordpress-plugin-deploy@master
+      #  env:
+      #    SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+      #    SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+      #    SLUG: email-protect
+      #    VERSION: ${{ github.event.head_commit.message }}

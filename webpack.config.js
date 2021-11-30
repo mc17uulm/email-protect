@@ -1,97 +1,68 @@
 const { resolve } = require('path');
 const DependencyExtractionWebpackPlugin = require('@wordpress/dependency-extraction-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const { ESBuildMinifyPlugin } = require('esbuild-loader');
 
-let config = {
-    module: {}
-};
+const exclude = [
+    /node_modules/,
+    /dist/,
+    /vendor/
+];
 
 const rules = [
     {
-        test: /\.(js|jsx)$/,
-        exclude: [
-            /node_modules/,
-            /vendor/,
-            /dist/
-        ],
+        test: /\.(js)$/,
+        exclude: exclude,
         use: {
-            loader: "babel-loader"
+            loader: "esbuild-loader",
+            options: {
+                loader: 'js',
+                target: 'es2015'
+            }
         }
     }, {
-        test: /\.(ts|tsx)$/,
-        exclude: [
-            /node_modules/,
-            /vendor/,
-            /dist/
-        ],
+        test: /\.(ts)$/,
+        exclude: exclude,
         use: {
-            loader: "ts-loader"
+            loader: "esbuild-loader",
+            options: {
+                loader: 'ts',
+                target: 'es2015'
+            }
         }
     }
 ];
 
-const backend = Object.assign({}, config, {
-    name: "backend",
-    entry: "./src/ts/backend/",
-    module: {
-        rules: rules
-    },
-    output: {
-        filename: 'mail-encrypt-backend.js',
-        path: resolve(__dirname, 'dist/js/')
-    },
-    resolve: {
-        extensions: [".js", ".jsx", ".ts", ".tsx"]
+module.exports = (env, argv) => {
+    return {
+        name: 'handler',
+        entry: './src/index',
+        optimization: {
+            minimizer: [
+                new ESBuildMinifyPlugin({
+                    target: 'es2015'
+                })
+            ]
+        },
+        module: {
+            rules: rules
+        },
+        devtool: 'source-map',
+        plugins: [
+            new DependencyExtractionWebpackPlugin({injectPolyfill: true}),
+            new BrowserSyncPlugin({
+                host: 'localhost',
+                port: 3000,
+                proxy: 'localhost:8080'
+            })
+        ],
+        output: {
+            filename: 'js/email-protect.js',
+            path: resolve(__dirname, 'dist/')
+        },
+        resolve: {
+            extensions: ['.js', '.ts']
+        },
+        mode: argv.mode
     }
-});
-
-const gutenberg = Object.assign({}, config, {
-    name: "gutenberg",
-    entry: './src/ts/gutenberg',
-    module: {
-        rules: rules
-    },
-    output: {
-        filename: 'mail-encrypt-gutenberg.js',
-        path: resolve(__dirname, 'dist/js/')
-    },
-    plugins: [
-        new DependencyExtractionWebpackPlugin({injectPolyfill: true})
-    ],
-    resolve: {
-        extensions: [".js", ".jsx", ".ts", ".tsx"]
-    }
-});
-
-const frontend = Object.assign({}, config, {
-    name: "frontend",
-    entry: './src/ts/frontend',
-    module: {
-       rules: rules
-    },
-    output: {
-        filename: 'mail-encrypt-frontend.js',
-        path: resolve(__dirname, 'dist/js/')
-    },
-    resolve: {
-        extensions: [".js", ".jsx", ".ts", ".tsx"]
-    }
-});
-
-const tinymce = Object.assign({}, config, {
-    name: "tinymce",
-    entry: './src/ts/tinymce',
-    module: {
-        rules: rules
-    },
-    output: {
-        filename: 'mail-encrypt-mce-script.js',
-        path: resolve(__dirname, 'dist/js/')
-    },
-    resolve: {
-        extensions: [".js", ".jsx", ".ts", ".tsx"]
-    }
-});
-
-module.exports = [
-    backend, gutenberg, frontend, tinymce
-];
+}

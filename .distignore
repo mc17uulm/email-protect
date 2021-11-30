@@ -1,0 +1,16 @@
+.git
+.github
+img
+node_modules
+src
+tests
+.babelrc
+.distignore
+BUGS.md
+bundle
+package.json
+phpstan.neon
+rector.php
+tsconfig.json
+webpack.config.js
+yarn.lock
