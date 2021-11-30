@@ -3,24 +3,38 @@
 cwd=$(pwd)
 build=$cwd/build
 
-rm -rf $build
+if [ -d "$build" ]; then
+  rm -rf $build
+fi
+
 mkdir $build
 mkdir $build/dist
 mkdir $build/plugin
-mkdir $build/plugin/MailProtect
+mkdir $build/plugin/EmailProtect
 
 yarn build
 
 cp -r "$cwd/dist/"* "$build/dist/"
 cp "$cwd/composer.json" "$build/"
 cp "$cwd/composer.lock" "$build/"
+cp "$cwd/rector.php" "$build/"
 cp "$cwd/LICENSE" "$build/"
-cp "$cwd/mail-protect.php" "$build/"
+cp "$cwd/email-protect.php" "$build/"
 cp "$cwd/readme.txt" "$build/"
-cp -r "$cwd/plugin/MailProtect/"* "$build/plugin/MailProtect"
+cp -r "$cwd/plugin/EmailProtect/"* "$build/plugin/EmailProtect"
 
 cd "$build"
 
+composer install
+./vendor/bin/rector process
+sed -i "s/Requires PHP: 8.0/Requires PHP: 7.0/" email-protect.php
+sed -i "s/\"php\": \">=8.0\"/\"php\": \">=7.0\"/" composer.json
+composer update
+rm -rf vendor/
+rm -f rector.php
+
 composer install --no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --optimize-autoloader --prefer-dist
 
-zip -qqr "$cwd/mail-protect.zip" .
+zip -qqr "$cwd/email-protect.zip" .
+
+rm -rf $build

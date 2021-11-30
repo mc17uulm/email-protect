@@ -1,6 +1,6 @@
 {
-    "name": "codeleaf/mail-protect",
-    "description": "Secures your mail addresses from spam bots. Use the [mail-crypt] shortcode to add encrypted mailaddresses to your page",
+    "name": "codeleaf/email-protect",
+    "description": "Secures your email addresses from spam bots. Use the [mail-crypt] shortcode to add encrypted mailaddresses to your page",
     "authors": [
         {
             "name": "CodeLeaf",
@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MailProtect\\": "./plugin/MailProtect"
+            "EmailProtect\\": "./plugin/EmailProtect"
         }
     }
 }

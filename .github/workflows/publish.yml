@@ -60,13 +60,13 @@ jobs:
             --exclude="*tsconfig.json*" \
             --exclude="*webpack.config.js*" \
             --exclude="*yarn.lock*" \
-            mail-protect.zip \
+            email-protect.zip \
             .
 
       - name: Release new version
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "mail-protect.zip"
+          artifacts: "email-protect.zip"
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.event.head_commit.message }}
 
@@ -75,5 +75,5 @@ jobs:
         env:
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-          SLUG: mail-protect
+          SLUG: email-protect
           VERSION: ${{ github.event.head_commit.message }}

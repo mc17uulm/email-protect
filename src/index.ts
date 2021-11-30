@@ -22,8 +22,8 @@ const decrypt = (str : string) : string => {
     ;
 }
 
-const addressSelector = 'data-mail-protect';
-const clickSelector = 'data-mail-protect-click';
+const addressSelector = 'data-email-protect';
+const clickSelector = 'data-email-protect-click';
 
 const addresses : NodeListOf<HTMLSpanElement> = document.querySelectorAll(`[${addressSelector}]`);
 const clicks : NodeListOf<HTMLAnchorElement> = document.querySelectorAll(`[${clickSelector}]`);

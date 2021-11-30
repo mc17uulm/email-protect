@@ -1,18 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * MailProtect
+ * EmailProtect
  *
- * @package     MailProtect
+ * @package     EmailProtect
  * @author      CodeLeaf
  * @copyright   2021 CodeLeaf
  * @license     GPL-2.0-or-later
  *
  * @wordpress-plugin
- * Plugin Name: MailProtect
- * Description: Simple and easy to use plugin to protect your email addresses of spam bots. With the [mail_encrypt] shortcode or our own Gutenberg block, all your email addresses are secure!
+ * Plugin Name: EmailProtect
+ * Description: Simple, fast and no-config plugin to protect your email address. No need for shortcodes or blocks. EmailProtect encrypts all your email addresses in your blog.
  * Author: CodeLeaf
- * Author URI: https://github.com/mc17uulm/wp-mail-crypter
+ * Author URI: https://github.com/mc17uulm/email-protect
  * Version: 4.0.0
  * License: GPLv3
  * Licence URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -35,28 +37,27 @@
  *
  */
 
-declare(strict_types=1);
 
 if (!defined('ABSPATH')) die("Invalid request");
 if(!defined('PHP_VERSION_ID') || PHP_VERSION_ID < 70000) {
-    error_log('MailProtect => plugin requires php version >= 7.0. Given (' . PHP_VERSION . ')');
-    die('MailProtect => plugin requires php version >= 7.0.');
+    error_log('EmailProtect => plugin requires php version >= 7.0. Given (' . PHP_VERSION . ')');
+    die('EmailProtect => plugin requires php version >= 7.0.');
 }
 if (!defined('PHP_VERSION_ID')) {
     define('PHP_VERSION_ID', 0);
 }
 
-define('MAIL_PROTECT_VERSION', '4.0.0');
-define('MAIL_PROTECT_SLUG', 'mail-protect');
-define('MAIL_PROTECT_FILE', __FILE__);
-define('MAIL_PROTECT_URL', plugin_dir_url(__FILE__));
-define('MAIL_PROTECT_PATH', plugin_dir_path(__FILE__));
-define('MAIL_PROTECT_BASENAME', plugin_basename(__FILE__));
-define('MAIL_PROTECT_DIR', __DIR__);
+define('EMAIL_PROTECT_VERSION', '4.0.0');
+define('EMAIL_PROTECT_SLUG', 'email-protect');
+define('EMAIL_PROTECT_FILE', __FILE__);
+define('EMAIL_PROTECT_URL', plugin_dir_url(__FILE__));
+define('EMAIL_PROTECT_PATH', plugin_dir_path(__FILE__));
+define('EMAIL_PROTECT_BASENAME', plugin_basename(__FILE__));
+define('EMAIL_PROTECT_DIR', __DIR__);
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-use MailProtect\Loader;
+use EmailProtect\Loader;
 
 $loader = new Loader(__FILE__);
 

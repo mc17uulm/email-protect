@@ -16,11 +16,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace MailProtect;
+namespace EmailProtect;
 
 /**
  * Class CodeFactory
- * @package MailProtect
+ * @package EMailProtect
  */
 final class CodeFactory
 {
@@ -68,8 +68,8 @@ final class CodeFactory
         }
         $enc_mail = $this->encrypt_by_caesar($mail);
         return $text === '' ?
-            "<p><a href='#' data-mail-protect-click='$enc_mail'><span data-mail-protect='{$enc_mail}'></span></a></p>" :
-            "<p><a href='#' data-mail-protect-click='$enc_mail'>$text</a></p>";
+            "<p><a href='#' data-email-protect-click='$enc_mail'><span data-email-protect='{$enc_mail}'></span></a></p>" :
+            "<p><a href='#' data-email-protect-click='$enc_mail'>$text</a></p>";
     }
 
 }

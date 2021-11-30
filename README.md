@@ -1,11 +1,11 @@
-# MailProtect
+# EmailProtect
 <small>Version 4.0.0</small>
 
 > :warning: **Breaking changes: ** Upgrade to version 4.0.0 can cause breaking changes. The Gutenberg Block is not longer available!
 
 ## Wordpress anti-spam email plugin :lock::e-mail:
 
-Simple, fast and no-config plugin to protect your email address. No need for shortcodes or blocks. MailProtect encrypts all your email addresses in your blog.
+Simple, fast and no-config plugin to protect your email address. No need for shortcodes or blocks. EmailProtect encrypts all your email addresses in your blog.
 
 ---
 
@@ -17,7 +17,7 @@ Only install and activate MailProtect in your WordPress backend. Now all your em
 
 ## How are my email addresses encrypted?
 
-MailProtect scans all of your posts, sites and other content for email addresses. If an email address is found, it is simply replaced with a special tag. 
+EmailProtect scans all of your posts, sites and other content for email addresses. If an email address is found, it is simply replaced with a special tag. 
 If a bot is now crawling your site, the tag cannot be decrypted. Only for an actual user our script decrypts this tag and the email address can be viewed.
 
 **Example**
@@ -30,8 +30,8 @@ Here is my email address [contact@code-leaf.de](mailto:contact@code-leaf.de).
 
 ```html
 Here is my email address 
-<a href ="#" data-mail-protect-click="eqpvcevBeqfg/ngch0fg">
-    <span data-mail-protect="eqpvcevBeqfg/ngch0fg"></span>
+<a href ="#" data-email-protect-click="eqpvcevBeqfg/ngch0fg">
+    <span data-email-protect="eqpvcevBeqfg/ngch0fg"></span>
 </a>
 ```
 
@@ -105,9 +105,9 @@ Til version 4.0 known as 'WP Mail Encrypt', til version 3.0 known as 'Mail Crypt
 ## Source
 
 **wordpress.org:**
-[https://de.wordpress.org/plugins/mail-protect/](https://de.wordpress.org/plugins/mail-protect/)
+[https://de.wordpress.org/plugins/email-protect/](https://de.wordpress.org/plugins/email-protect/)
 
 The full sourcecode can be found on github:
 
 **github.com:**
-[https://github.com/mc17uulm/mail-protect](https://github.com/mc17uulm/mail-protect)
+[https://github.com/mc17uulm/email-protect](https://github.com/mc17uulm/email-protect)

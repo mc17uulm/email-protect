@@ -1,7 +1,7 @@
 {
-  "name": "mail-protect",
+  "name": "email-protect",
   "version": "4.0.0",
-  "description": "Secures your mail addresses from spam bots. Use the [mail-crypt] shortcode to add encrypted mail addresses to your page",
+  "description": "Simple, fast and no-config plugin to protect your email address. No need for shortcodes or blocks. EmailProtect encrypts all your email addresses in your blog",
   "main": "index.js",
   "scripts": {
     "tsc": "tsc",

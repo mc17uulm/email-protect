@@ -53,11 +53,11 @@ module.exports = (env, argv) => {
             new BrowserSyncPlugin({
                 host: 'localhost',
                 port: 3000,
-                proxy: 'mail-protect.stacks.run'
+                proxy: 'localhost:8080'
             })
         ],
         output: {
-            filename: 'js/mail-protect.js',
+            filename: 'js/email-protect.js',
             path: resolve(__dirname, 'dist/')
         },
         resolve: {

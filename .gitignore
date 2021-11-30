@@ -4,5 +4,5 @@ node_modules/
 vendor/
 build/
 dist/js/*
-mail-protect.zip
+email-protect.zip
 yarn-error.log

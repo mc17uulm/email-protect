@@ -1,4 +1,4 @@
-=== Mail Protect ===
+=== Email Protect ===
 Contributors: mc17
 Tags: mail, email, security, protection, encryption, spam, bots, secure, encrypt, protect, easy, fast
 Requires at least: 4.4.1
@@ -8,29 +8,29 @@ Requires PHP: 7.0
 License: GNUv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Simple and easy to use plugin to protect your email addresses of spam bots. With the [mail_encrypt] shortcode or our own Gutenberg block, all your email addresses are secure!
+Simple, fast and no-config plugin to protect your email address. No need for shortcodes or blocks. EmailProtect encrypts all your email addresses in your blog.
 
 == Description ==
-# MailProtect
+# EmailProtect
 <small>Version 4.0.0</small>
 
 > :warning: **Breaking changes: ** Upgrade to version 4.0.0 can cause breaking changes. The Gutenberg Block is not longer available!
 
 ## WordPress anti-spam email plugin :lock::e-mail:
 
-Simple, fast and no-config plugin to protect your email address. No need for shortcodes or blocks. MailProtect encrypts all your email addresses in your blog.
+Simple, fast and no-config plugin to protect your email address. No need for shortcodes or blocks. EmailProtect encrypts all your email addresses in your blog.
 
 ---
 
 ## Usage
 
-Only install and activate MailProtect in your WordPress backend. Now all your email addresses are protected against spam-bots. No configuration required.
+Only install and activate EmailProtect in your WordPress backend. Now all your email addresses are protected against spam-bots. No configuration required.
 
 ---
 
 ## How are my email addresses encrypted?
 
-MailProtect scans all of your posts, sites and other content for email addresses. If an email address is found, it is simply replaced with a special tag.
+EmailProtect scans all of your posts, sites and other content for email addresses. If an email address is found, it is simply replaced with a special tag.
 If a bot is now crawling your site, the tag cannot be decrypted. Only for an actual user our script decrypts this tag and the email address can be viewed.
 
 **Example**
@@ -43,8 +43,8 @@ Here is my email address [contact@code-leaf.de](mailto:contact@code-leaf.de).
 
 ```html
 Here is my email address
-<a href ="#" data-mail-protect-click="eqpvcevBeqfg/ngch0fg">
-    <span data-mail-protect="eqpvcevBeqfg/ngch0fg"></span>
+<a href ="#" data-email-protect-click="eqpvcevBeqfg/ngch0fg">
+    <span data-email-protect="eqpvcevBeqfg/ngch0fg"></span>
 </a>
 ```
 
@@ -118,15 +118,15 @@ Til version 4.0 known as 'WP Mail Encrypt', til version 3.0 known as 'Mail Crypt
 ## Source
 
 **wordpress.org:**
-[https://de.wordpress.org/plugins/mail-protect/](https://de.wordpress.org/plugins/mail-protect/)
+[https://de.wordpress.org/plugins/mail-protect/](https://de.wordpress.org/plugins/email-protect/)
 
 The full sourcecode can be found on github:
 
 **github.com:**
-[https://github.com/mc17uulm/mail-protect](https://github.com/mc17uulm/mail-protect)
+[https://github.com/mc17uulm/mail-protect](https://github.com/mc17uulm/email-protect)
 
 == Installation ==
-1. Search in plugins menu for "MailProtect" or download zip and upload via the WordPress installer and install plugin
+1. Search in plugins menu for "EmailProtect" or download zip and upload via the WordPress installer and install plugin
 2. Activate plugin
 3. All your email addresses are automatically secured. Safe and easy!
 
