@@ -85,10 +85,10 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ env.version }}
 
-      #- name: Publish to wordpress.org
-      #  uses: nk-o/action-wordpress-plugin-deploy@master
-      #  env:
-      #    SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-      #    SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-      #    SLUG: email-protect
-      #    VERSION: ${{ github.event.head_commit.message }}
+      - name: Publish to wordpress.org
+        uses: nk-o/action-wordpress-plugin-deploy@master
+        env:
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SLUG: mail-crypter
+          VERSION: ${{ github.event.head_commit.message }}
