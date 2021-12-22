@@ -69,8 +69,8 @@ final class CodeFactory
         }
         $enc_mail = $this->encrypt_by_caesar($mail);
         return $text === '' ?
-            "<p><a href='#' data-email-protect-click='$enc_mail'><span data-email-protect='{$enc_mail}'></span></a></p>" :
-            "<p><a href='#' data-email-protect-click='$enc_mail'>$text</a></p>";
+            "<span><a href='#' data-email-protect-click='$enc_mail'><span data-email-protect='{$enc_mail}'></span></a></span>" :
+            "<span><a href='#' data-email-protect-click='$enc_mail'>$text</a></span>";
     }
 
 }
