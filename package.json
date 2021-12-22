@@ -7,7 +7,9 @@
     "tsc": "tsc",
     "start": "webpack --mode development --watch",
     "build": "webpack --mode production",
-    "php:analyse": "./vendor/bin/phpstan analyse --memory-limit=-1 -c phpstan.neon"
+    "php:analyse": "./vendor/bin/phpstan analyse --memory-limit=-1 -c phpstan.neon",
+    "up": "docker-compose up -d",
+    "down": "docker-compose down"
   },
   "repository": {
     "type": "git",
