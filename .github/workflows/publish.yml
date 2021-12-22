@@ -1,4 +1,4 @@
-name: Publish build plugin to wordpress.org
+name: Publish plugin to wordpress.org
 
 on:
   push:
