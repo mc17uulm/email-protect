@@ -1,6 +1,6 @@
 {
   "name": "email-protect",
-  "version": "4.0.1",
+  "version": "4.0.3",
   "description": "Simple, fast and no-config plugin to protect your email address. No need for shortcodes or blocks. EmailProtect encrypts all your email addresses in your blog",
   "main": "index.js",
   "scripts": {
@@ -22,17 +22,17 @@
   },
   "homepage": "https://github.com/mc17uulm/wp-mail-crypter#readme",
   "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@babel/plugin-proposal-class-properties": "^7.16.0",
-    "@babel/preset-env": "^7.16.4",
-    "@babel/preset-typescript": "^7.16.0",
-    "@wordpress/dependency-extraction-webpack-plugin": "^3.2.1",
-    "browser-sync": "^2.27.7",
+    "@babel/core": "^7.21.0",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-typescript": "^7.21.0",
+    "@wordpress/dependency-extraction-webpack-plugin": "^4.11.0",
+    "browser-sync": "^2.28.3",
     "browser-sync-webpack-plugin": "^2.3.0",
-    "esbuild-loader": "^2.16.0",
-    "typescript": "^4.5.2",
-    "webpack": "^5.64.2",
-    "webpack-cli": "^4.9.1"
+    "esbuild-loader": "^3.0.1",
+    "typescript": "^4.9.5",
+    "webpack": "^5.76.1",
+    "webpack-cli": "^5.0.1"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4"

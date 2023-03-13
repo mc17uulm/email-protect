@@ -1,5 +1,5 @@
 # Email Protect
-<small>Version 4.0.2</small>
+<small>Version 4.0.3</small>
 
 > :warning: **Breaking changes: ** Version 4.0.x does no longer support the MailEncrypt Gutenberg Block. Your email addresses are still protected
 
@@ -38,6 +38,8 @@ Here is my email address
 ---
 
 ## Versions
+
+- 4.0.3
 
 - 4.0.2
   - shortcode renders to ``<span>`` not ``<p>``

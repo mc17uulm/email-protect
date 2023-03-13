@@ -74,8 +74,7 @@ final class Loader
 
         if($attributes['mail'] === '') return __("<strong>Error</strong> [email_protect] shortcode arguments are invalid. 'mail' is missing.", 'email-protect');
 
-        $factory = new CodeFactory();
-        return $factory->mail_to_code($attributes['mail'], $attributes['text']);
+        return CodeFactory::mail_to_code($attributes['mail'], $attributes['text']);
 
     }
 
@@ -94,13 +93,12 @@ final class Loader
      * @return string | null
      */
     public function email_filter(string $content): ?string {
-        $factory = new CodeFactory();
-        $links = preg_replace_callback('/MAILTO:(.*?)([\'\"])/i', function(array $input) use($factory) {
-            return sprintf('#%2$s data-email-protect-click="%1$s"', $factory->encrypt_by_caesar($input[1]), $input[2]);
+        $links = preg_replace_callback('/MAILTO:(.*?)([\'\"])/i', function(array $input) {
+            return sprintf('#%2$s data-email-protect-click="%1$s"', CodeFactory::encrypt_by_caesar($input[1]), $input[2]);
         }, $content);
-        return preg_replace_callback('/[^\s\<\>]+\@\S+\.[^\s\<\>]+/i', function(array $input) use($factory) {
+        return preg_replace_callback('/[^\s\<\>]+\@\S+\.[^\s\<\>]+/i', function(array $input) {
             if(str_contains($input[0], "\"")) return $input[0];
-            return sprintf('<span data-email-protect="%1$s"></span>', $factory->encrypt_by_caesar($input[0]));
+            return sprintf('<span data-email-protect="%1$s"></span>', CodeFactory::encrypt_by_caesar($input[0]));
         }, $links ?? $content);
    }
 

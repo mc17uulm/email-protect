@@ -1,7 +1,7 @@
 const { resolve } = require('path');
 const DependencyExtractionWebpackPlugin = require('@wordpress/dependency-extraction-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const { ESBuildMinifyPlugin } = require('esbuild-loader');
+const { EsbuildPlugin } = require('esbuild-loader');
 
 const exclude = [
     /node_modules/,
@@ -39,7 +39,7 @@ module.exports = (env, argv) => {
         entry: './src/index',
         optimization: {
             minimizer: [
-                new ESBuildMinifyPlugin({
+                new EsbuildPlugin({
                     target: 'es2015'
                 })
             ]
