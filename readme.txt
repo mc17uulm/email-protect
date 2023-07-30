@@ -2,9 +2,9 @@
 Contributors: CodeLeaf
 Tags: mail, email, security, protection, encryption, spam, bots, secure, encrypt, protect, easy, fast
 Requires at least: 4.4.1
-Tested up to: 6.1.1
+Tested up to: 6.2.2
 Stable tag: trunk
-Requires PHP: 7.1
+Requires PHP: 7.0
 License: GNUv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -53,6 +53,7 @@ Here is my email address
 ## Versions
 
 - 4.0.3
+  - updated dependencies
 
 - 4.0.2
   - shortcode renders to ``<span>`` not ``<p>``
@@ -144,6 +145,8 @@ The full sourcecode can be found on github:
 == Changelog ==
 
 = 4.0.3 =
+
+* updated dependencies
 
 = 4.0.2 =
 * shortcode renders to ``<span>`` not ``<p>``

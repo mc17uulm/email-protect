@@ -18,5 +18,6 @@ return static function (ContainerConfigurator $configurator) : void {
     $configurator->import(DowngradeSetList::PHP_73);
     $configurator->import(DowngradeSetList::PHP_72);
     $configurator->import(DowngradeSetList::PHP_71);
+	$configurator->import(DowngradeSetList::PHP_70);
 
 };

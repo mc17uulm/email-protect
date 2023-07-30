@@ -19,12 +19,12 @@ declare(strict_types=1);
  * License: GPLv3
  * Licence URI: http://www.gnu.org/licenses/gpl-3.0.txt
  * Tags: mail, security, encryption, spam, email, secure, encrypt, protect
- * Requires PHP: 8.1
+ * Requires PHP: 8.2
  *
  * === Plugin Information ===
  *
  * Version: 4.0.3
- * Date: 13.03.2023
+ * Date: 01.08.2023
  *
  * This program is free software; you can redistribute it and/or modify it under the terms of the GNU
  * General Public License version 2, as published by the Free Software Foundation. You may NOT assume
@@ -39,9 +39,9 @@ declare(strict_types=1);
 
 
 if (!defined('ABSPATH')) die("Invalid request");
-if(!defined('PHP_VERSION_ID') || PHP_VERSION_ID < 70100) {
-    error_log('EmailProtect => plugin requires php version >= 7.1. Given (' . PHP_VERSION . ')');
-    die('EmailProtect => plugin requires php version >= 7.1.');
+if(!defined('PHP_VERSION_ID') || PHP_VERSION_ID < 70000) {
+    error_log('EmailProtect => plugin requires php version >= 7.0. Given (' . PHP_VERSION . ')');
+    die('EmailProtect => plugin requires php version >= 7.0.');
 }
 if (!defined('PHP_VERSION_ID')) {
     define('PHP_VERSION_ID', 0);

@@ -26,7 +26,7 @@ If a bot is now crawling your site, the tag cannot be decrypted. Only for an act
 
 Here is my email address [contact@code-leaf.de](mailto:contact@code-leaf.de).
 
-*This is what a spam-bot sees:*
+*This is what a spam bot sees:*
 
 ```html
 Here is my email address 
@@ -40,6 +40,7 @@ Here is my email address
 ## Versions
 
 - 4.0.3
+  - updated dependencies
 
 - 4.0.2
   - shortcode renders to ``<span>`` not ``<p>``

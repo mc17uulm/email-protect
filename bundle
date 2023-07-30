@@ -27,8 +27,8 @@ cd "$build"
 
 composer install
 ./vendor/bin/rector process
-sed -i "s/Requires PHP: 8.1/Requires PHP: 7.1/" email-protect.php
-sed -i "s/\"php\": \">=8.1\"/\"php\": \">=7.1\"/" composer.json
+sed -i "s/Requires PHP: 8.2/Requires PHP: 7.0/" email-protect.php
+sed -i "s/\"php\": \">=8.2\"/\"php\": \">=7.0\"/" composer.json
 composer update
 
 sleep 1

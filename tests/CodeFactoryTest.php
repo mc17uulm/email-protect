@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright (c) 2020. mc17
+ * Copyright (c) 2020 - 2023. mc17
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
