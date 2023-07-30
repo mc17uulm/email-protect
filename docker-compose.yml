@@ -31,7 +31,7 @@ services:
   wordpress:
     depends_on:
       - db
-    image: wordpress:php8.2-apache
+    image: wordpress:php8.1-apache
     restart: always
     stdin_open: true
     volumes:

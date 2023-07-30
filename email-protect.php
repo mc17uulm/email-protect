@@ -19,7 +19,7 @@ declare(strict_types=1);
  * License: GPLv3
  * Licence URI: http://www.gnu.org/licenses/gpl-3.0.txt
  * Tags: mail, security, encryption, spam, email, secure, encrypt, protect
- * Requires PHP: 8.2
+ * Requires PHP: 8.1
  *
  * === Plugin Information ===
  *
