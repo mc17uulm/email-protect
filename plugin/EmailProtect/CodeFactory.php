@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright (c) 2021 CodeLeaf
+ * Copyright (c) 2021 - 2023 CodeLeaf
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,7 +29,7 @@ final class CodeFactory
      * @param string $str
      * @return string
      */
-    public function encrypt_to_ascii(string $str) : string {
+    public static function encrypt_to_ascii(string $str) : string {
         return array_reduce(
             array_map(function(string $piece) : int {
                 return ord($piece);
@@ -46,7 +46,7 @@ final class CodeFactory
      * @param string $str
      * @return string
      */
-    public function encrypt_by_caesar(string $str) : string {
+    public static function encrypt_by_caesar(string $str) : string {
         return implode("",
             array_map(function (string $piece) {
                 return chr(ord($piece) + 2);
@@ -60,14 +60,14 @@ final class CodeFactory
      * @param bool $js
      * @return string
      */
-    public function mail_to_code(string $mail, string $text, bool $js = false) : string
+    public static function mail_to_code(string $mail, string $text, bool $js = false) : string
     {
         if(count(func_get_args()) > 2) {
             trigger_error(
                 '"js" is deprecated and will be removed in a future release', E_USER_NOTICE
             );
         }
-        $enc_mail = $this->encrypt_by_caesar($mail);
+        $enc_mail = CodeFactory::encrypt_by_caesar($mail);
         return $text === '' ?
             "<span><a href='#' data-email-protect-click='$enc_mail'><span data-email-protect='{$enc_mail}'></span></a></span>" :
             "<span><a href='#' data-email-protect-click='$enc_mail'>$text</a></span>";

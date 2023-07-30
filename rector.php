@@ -12,11 +12,12 @@ return static function (ContainerConfigurator $configurator) : void {
 
     $parameters->set(Option::PATHS, [__DIR__ . '/email-protect.php', __DIR__ . '/plugin/EmailProtect']);
 
+    $configurator->import(DowngradeSetList::PHP_81);
     $configurator->import(DowngradeSetList::PHP_80);
     $configurator->import(DowngradeSetList::PHP_74);
     $configurator->import(DowngradeSetList::PHP_73);
     $configurator->import(DowngradeSetList::PHP_72);
     $configurator->import(DowngradeSetList::PHP_71);
-    $configurator->import(DowngradeSetList::PHP_70);
+	$configurator->import(DowngradeSetList::PHP_70);
 
 };

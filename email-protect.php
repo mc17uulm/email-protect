@@ -15,16 +15,16 @@ declare(strict_types=1);
  * Description: Simple, fast and no-config plugin to protect your email address. No need for shortcodes or blocks. EmailProtect encrypts all your email addresses in your blog.
  * Author: CodeLeaf
  * Author URI: https://github.com/mc17uulm/email-protect
- * Version: 4.0.2
+ * Version: 4.0.3
  * License: GPLv3
  * Licence URI: http://www.gnu.org/licenses/gpl-3.0.txt
  * Tags: mail, security, encryption, spam, email, secure, encrypt, protect
- * Requires PHP: 8.0
+ * Requires PHP: 8.2
  *
  * === Plugin Information ===
  *
- * Version: 4.0.2
- * Date: 22.12.2021
+ * Version: 4.0.3
+ * Date: 01.08.2023
  *
  * This program is free software; you can redistribute it and/or modify it under the terms of the GNU
  * General Public License version 2, as published by the Free Software Foundation. You may NOT assume
@@ -47,7 +47,7 @@ if (!defined('PHP_VERSION_ID')) {
     define('PHP_VERSION_ID', 0);
 }
 
-define('EMAIL_PROTECT_VERSION', '4.0.1');
+define('EMAIL_PROTECT_VERSION', '4.0.3');
 define('EMAIL_PROTECT_SLUG', 'email-protect');
 define('EMAIL_PROTECT_FILE', __FILE__);
 define('EMAIL_PROTECT_URL', plugin_dir_url(__FILE__));

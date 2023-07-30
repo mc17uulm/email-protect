@@ -2,7 +2,7 @@
 Contributors: CodeLeaf
 Tags: mail, email, security, protection, encryption, spam, bots, secure, encrypt, protect, easy, fast
 Requires at least: 4.4.1
-Tested up to: 5.8.2
+Tested up to: 6.2.2
 Stable tag: trunk
 Requires PHP: 7.0
 License: GNUv3
@@ -12,7 +12,7 @@ Simple, fast and no-config plugin to protect your email address. No need for sho
 
 == Description ==
 # EmailProtect
-<small>Version 4.0.2</small>
+<small>Version 4.0.3</small>
 
 **WARNING!** *Breaking changes:* Version 4.0.x does no longer support the MailEncrypt Gutenberg Block. Your email addresses are still protected
 
@@ -51,6 +51,9 @@ Here is my email address
 ---
 
 ## Versions
+
+- 4.0.3
+  - updated dependencies
 
 - 4.0.2
   - shortcode renders to ``<span>`` not ``<p>``
@@ -140,6 +143,14 @@ The full sourcecode can be found on github:
 
 
 == Changelog ==
+
+= 4.0.3 =
+
+* updated dependencies
+
+= 4.0.2 =
+* shortcode renders to ``<span>`` not ``<p>``
+* legacy index files added
 
 = 4.0.1 =
 * better email recognition

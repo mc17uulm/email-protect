@@ -12,7 +12,7 @@ mkdir $build/dist
 mkdir $build/plugin
 mkdir $build/plugin/EmailProtect
 
-yarn build
+npm run build
 
 cp -r "$cwd/dist/"* "$build/dist/"
 cp "$cwd/composer.json" "$build/"
@@ -27,8 +27,8 @@ cd "$build"
 
 composer install
 ./vendor/bin/rector process
-sed -i "s/Requires PHP: 8.0/Requires PHP: 7.0/" email-protect.php
-sed -i "s/\"php\": \">=8.0\"/\"php\": \">=7.0\"/" composer.json
+sed -i "s/Requires PHP: 8.2/Requires PHP: 7.0/" email-protect.php
+sed -i "s/\"php\": \">=8.2\"/\"php\": \">=7.0\"/" composer.json
 composer update
 
 sleep 1
